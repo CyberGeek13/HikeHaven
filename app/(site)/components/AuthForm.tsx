@@ -2,9 +2,9 @@
 
 import Button from "@/app/components/Button";
 import Input from "@/app/components/inputs/Input";
+import { BsGoogle } from "react-icons/bs";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { BsGoogle } from "react-icons/bs";
 import AuthSocialButton from "./AuthSocialButton";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -43,18 +43,41 @@ const AuthForm = () => {
 
         if(variant === 'REGISTER') {
             axios.post('/api/register', data)
-            .catch(()=>toast.error("Something went Wrong"))
-            .finally(()=>setIsLoading(false))
+            .catch(() => toast.error('Something went wrong'))
+            .finally(() => setIsLoading(false))
         }
 
         if (variant === 'LOGIN') {
-            //axios login
+            signIn('credentials', {
+                ...data,
+                redirect: false,
+            })
+            .then((callback) => {
+                if (callback?.error) {
+                    toast.error('Invalid credentials')
+                }
+
+                if (callback?.ok && !callback?.error) {
+                    toast.success('Logged in!')
+                }
+            })
+            .finally(() => setIsLoading(false))
         }
     }
 
     const socialAction = (action: string) => {
         setIsLoading(true);
-        //OAuth logins
+        signIn(action, { redirect: false })
+        .then((callback) => {
+            if (callback?.error) {
+                toast.error('Something went wrong')
+            }
+
+            if (callback?.ok && !callback?.error) {
+                toast.success('Logged in!')
+            }
+        })
+        .finally(() => setIsLoading(false))
     }
 
     return ( 
