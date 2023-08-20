@@ -68,15 +68,15 @@ const AuthForm : React.FC<AuthFormProps> = ({variant, setVariant}) => {
             })
             .then((callback) => {
                 if (callback?.error) {
-                    toast.error('Invalid credentials')
+                    toast.error(callback.error)
                 }
 
                 if (callback?.ok && !callback?.error) {
+                    router.push('/home')
                     toast.success('Logged in!')
                 }
             })
             .finally(() => {
-                router.push('/home')
                 setIsLoading(false)
             })
         }
