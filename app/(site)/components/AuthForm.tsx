@@ -54,7 +54,11 @@ const AuthForm : React.FC<AuthFormProps> = ({variant, setVariant}) => {
         if(variant === 'REGISTER') {
             axios.post('/api/register', data)
             .catch(() => toast.error('Something went wrong'))
-            .finally(() => setIsLoading(false))
+            .finally(() => {
+                toast.success('Registered!')
+                router.push('/home')
+                setIsLoading(false)
+            })
         }
 
         if (variant === 'LOGIN') {
@@ -71,7 +75,10 @@ const AuthForm : React.FC<AuthFormProps> = ({variant, setVariant}) => {
                     toast.success('Logged in!')
                 }
             })
-            .finally(() => setIsLoading(false))
+            .finally(() => {
+                router.push('/home')
+                setIsLoading(false)
+            })
         }
     }
 
