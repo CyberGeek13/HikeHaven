@@ -1,4 +1,4 @@
-html, body, :root{
+html, body{
     height: 140vh;
     background-image: url("../../public/images/background.jpg");
     background-size:cover;
