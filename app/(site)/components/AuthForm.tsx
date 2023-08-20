@@ -3,18 +3,28 @@
 import Button from "@/app/components/Button";
 import Input from "@/app/components/inputs/Input";
 import { BsGoogle } from "react-icons/bs";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-type Variant = 'LOGIN' | 'REGISTER'
+interface AuthFormProps {
+    variant : string, 
+    setVariant : any
+}
 
-const AuthForm = () => {
-    const [variant, setVariant] = useState<Variant>('LOGIN')
+const AuthForm : React.FC<AuthFormProps> = ({variant, setVariant}) => {
+    const session = useSession();
+    const router = useRouter();
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    useEffect(()=>{
+        if(session?.status === "authenticated"){
+            router.push("/home")
+        }
+    }, [session?.status, router])
 
     const toggleVariant = useCallback(() => {
         if(variant === 'LOGIN') {
@@ -150,7 +160,7 @@ const AuthForm = () => {
                         onClick={toggleVariant}
                         className="underline cursor-pointer"
                     >
-                        {variant === 'LOGIN' ? 'Create an account' : 'Sign in'}
+                        {variant === 'LOGIN' ? 'Start your Journey with us' : 'Sign in'}
                     </div>
                 </div>
             </div>
