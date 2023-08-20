@@ -53,10 +53,12 @@ const AuthForm : React.FC<AuthFormProps> = ({variant, setVariant}) => {
 
         if(variant === 'REGISTER') {
             axios.post('/api/register', data)
-            .catch(() => toast.error('Something went wrong'))
-            .finally(() => {
+            .then(() => {
                 setVariant('LOGIN')
                 toast.success('Registered!')
+            })
+            .catch(() => toast.error('Something went wrong'))
+            .finally(() => {
                 setIsLoading(false)
             })
         }

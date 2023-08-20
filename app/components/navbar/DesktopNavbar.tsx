@@ -24,6 +24,8 @@ const DesktopNavbar = () => {
                     />
                 ))
             }
+            <div className="mt-100"><button onClick={handleClick}>Sign Out</button></div>
+        
         </div>
      );
 }
