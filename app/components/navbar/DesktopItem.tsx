@@ -9,6 +9,7 @@ interface DesktopItemProps{
     label:string;
     href:string;
     active:boolean;
+    
 }
 
 const DesktopItem:React.FC<DesktopItemProps> = ({

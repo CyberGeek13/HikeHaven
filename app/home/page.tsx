@@ -1,14 +1,11 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { signOut } from "next-auth/react";
 import Image from "next/image";
 
 const Home = () => {
     const router = useRouter();
-    const handleClick=()=>{
-        signOut();
-    };
+
     const btnClick=()=>{
         router.push("/upcoming");
     };
@@ -25,8 +22,6 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            
-            <div className="mt-100"><button onClick={handleClick}>Sign Out</button></div>
         </main>
     );
 }
