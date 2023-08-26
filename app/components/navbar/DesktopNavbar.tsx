@@ -6,6 +6,7 @@ import DesktopItem from './DesktopItem';
 import { signOut } from "next-auth/react";
 import {useRouter} from 'next/navigation';
 import useWhiteRoutes from '@/app/hooks/useWhiteRoutes';
+import { FaSearch } from 'react-icons/fa';
 
 
 const DesktopNavbar = () => {
@@ -29,9 +30,20 @@ const DesktopNavbar = () => {
                         key={item.label}
                         href={item.href}
                         active={item.active}
+                        logo={item.logo}
                     />
                 ))
             }
+            <div className="relative">
+      <input
+        type="text"
+        placeholder="Search"
+        className="w-[300px] focus:w-[400px] transition px-4 py-2 pr-10 leading-tight text-gray-700 border rounded-md shadow-sm focus:border-gray-900"
+      />
+      <button className="absolute right-2 top-2 text-gray-600">
+        <FaSearch /> {/* Use the search icon */}
+      </button>
+    </div>
         </div>
 
         <div className='w-full lg:flex hidden lg:left-0 lg:z-40 lg:bg-[#ffd11a] lg:border-r-[1px] justify-between items-center px-6'>

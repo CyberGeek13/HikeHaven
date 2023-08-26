@@ -4,16 +4,17 @@ import React from "react";
 import {useRouter} from "next/navigation";
 import clsx from "clsx";
 import Link from "next/link";
+import { IconType } from "react-icons";
 
 interface DesktopItemProps{
     label:string;
     href:string;
     active:boolean;
-    
+    logo?:IconType;
 }
 
 const DesktopItem:React.FC<DesktopItemProps> = ({
-    label,href,active
+    label,href,active,logo:Logo
 }) => {
     return ( 
         <div>
@@ -32,7 +33,13 @@ const DesktopItem:React.FC<DesktopItemProps> = ({
                 active && 'bg-gray-100 text-black'
                 )}
                 >
-                    <span>{label}</span>
+                    
+                    <span className="flex gap-2 items-center">
+                    {
+                        Logo ? <Logo /> : null
+                    }
+                    {label}
+                    </span>
                 </Link>
         </div>
      );
