@@ -3,6 +3,7 @@ import { useMemo } from "react";
 const useNews = () => {
     const news = useMemo(() => [
         {
+            id: 1,
             title:"First season of the Tulian Lake trek starts on a great note!",
             img:"/images/upcoming/tulian_lake.jpg",
             body:`The first group that trekked to Tulian Lake is back! They experienced great weather on the trek, mostly sunny. And have come back mesmerized by the views and landscape of this trek.
@@ -14,6 +15,7 @@ const useNews = () => {
             date:new Date(),
         },
         {
+            id: 2,
             title:"The weather clears up in the Valley of Flowers region. Trek is back on schedule.",
             img:"/images/upcoming/pipalkoti.jpg",
             body:`As soon as the weather cleared up early this morning, traffic started moving between Pipalkoti and Joshimath. As a result, the August 23 group to Valley of Flowers was able to reach Dhak by 7.30 a.m. today.
@@ -30,6 +32,7 @@ const useNews = () => {
             date:new Date(),
         },
         {
+            id: 3,
             title:"Heavy Rains on the Valley of Flowers trek. Here's what you can expect.",
             img:"/images/upcoming/valleyofflowers.jpg",
             body:`It has been raining heavily in the Valley of Flowers region since 3 a.m. today.
@@ -40,6 +43,7 @@ const useNews = () => {
             date:new Date(),
         },
         {
+            id: 4,
             title:"Latest Photos from the Pin Bhaba Pass trek by HikeHaven",
             img:"/images/upcoming/pin_bhabha.jpg",
             body:`A few days ago, Trek Purav Ajmera returned from the first Pin Bhaba Pass trek of the season. The photos he shared left us stunned!
@@ -48,6 +52,7 @@ const useNews = () => {
             date:new Date(),
         },
         {
+            id: 5,
             title:"Green Trails Report: Teams collected 1088 kg of waste in June/July 2023",
             img:"/images/upcoming/greentrails.jpg",
             body:`At the end of every month, we make a report of the amount of waste our teams and trekkers have collected from the trails. This waste is segregated and handed over to waste management units in the respective regions. 
@@ -58,6 +63,7 @@ const useNews = () => {
             date:new Date(),
         },
         {
+            id: 6,
             title:"Team HikeHaven conducts safety and technical training to upskill guides in Uttarakhand",
             img:"/images/upcoming/technical.jpg",
             body:`HikeHaven conducted a 2-day training program for our guides at the Raithal Campus (basecamp for Dayara Bugyal trek).
@@ -70,6 +76,7 @@ const useNews = () => {
             date:new Date(),
         },
         {
+            id: 7,
             title:"We're recruiting Trek Leaders & Volunteers at HikeHaven",
             img:"/images/upcoming/trekleaders.jpg",
             body:`We are actively looking for 20 more Trek Leaders to join our team.
@@ -80,6 +87,7 @@ const useNews = () => {
             date:new Date(),
         },
         {
+            id: 8,
             title:"Irresponsible trekking groups in Maharashtra to face problems against their actions.",
             img:"/images/upcoming/overcrowd.jpg",
             body:`In the last few years, incidents of trekkers getting lost, drowned or falling down a gorge is on the rise. Every monsoon, numerous cases are registered, especially on weekends. 
@@ -91,4 +99,8 @@ const useNews = () => {
             date:new Date(),
         },
     ],[])
+
+    return news;
 }
+
+export default useNews;
