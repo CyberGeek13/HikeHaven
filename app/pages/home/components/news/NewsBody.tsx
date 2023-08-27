@@ -26,6 +26,7 @@ const NewsBody: React.FC<NewsBodyProps> = ({
             <div className="font-bold text-[25px]">
                 {title}
             </div>
+            <div>{date}</div>
             <br />
             {body}
         </div>

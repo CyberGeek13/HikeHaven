@@ -12,9 +12,20 @@ const NewsList = () => {
             <div className="flex flex-col gap-5 bg-white p-[10px] rounded-md shadow-lg">
                 {news.map((newsItem) => (
                     <div className="flex flex-col gap-2 max-w-[450px] hover:underline cursor-pointer">
-                        <div className={clsx("text-sm", currentNews.id === newsItem.id && "font-bold")} onClick={() => setCurrentNews(newsItem)}>
-                            {newsItem.title}
+                        <div className="flex gap-2">
+                            {
+                                currentNews.id === newsItem.id && (
+                            <div className="h-[20px] w-[10px] bg-[#ffd11a]"></div>
+                                )
+                            }
+        <div>
+            <div className={clsx("text-sm", currentNews.id === newsItem.id && "font-bold")} onClick={() => setCurrentNews(newsItem)}>
+                    {newsItem.title}
+            </div>
+                <div className="text-[12px] mt-2">{newsItem.date}</div>
+        </div>
                         </div>
+                <div className="w-full h-[1.5px] bg-gray-300"></div>
                     </div>
                 ))}
             </div>
