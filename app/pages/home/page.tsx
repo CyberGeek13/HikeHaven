@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import News from "./components/news/News";
 
 const Home = () => {
     const router = useRouter();
@@ -22,6 +23,7 @@ const Home = () => {
                     </button>
                 </div>
             </div>
+            <News />
         </main>
     );
 }
