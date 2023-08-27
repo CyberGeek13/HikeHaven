@@ -46,7 +46,7 @@ const DesktopNavbar = () => {
     </div>
         </div>
 
-        <div className='w-full lg:flex hidden lg:left-0 lg:z-40 lg:bg-[#ffd11a] lg:border-r-[1px] justify-between items-center px-6'>
+        <div className='w-[full] lg:flex hidden lg:left-0 lg:z-40 lg:bg-[#ffd11a] lg:border-r-[1px] justify-between items-center px-20'>
             {
                 routes.map(item => (
                     <DesktopItem 

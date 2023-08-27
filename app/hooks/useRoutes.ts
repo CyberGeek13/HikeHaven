@@ -1,6 +1,5 @@
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { signOut } from "next-auth/react";
 
 const useRoutes = () => {
     const pathname = usePathname();

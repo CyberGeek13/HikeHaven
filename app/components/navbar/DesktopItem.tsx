@@ -36,13 +36,9 @@ const DesktopItem:React.FC<DesktopItemProps> = ({
                 active && 'bg-gray-100 text-black'
                 )}
                 >
-                    
-                    {/* <div > */}
                     {
                         Logo ? <Logo /> : null
                     }
-                    {/* {label} */}
-                    {/* </div> */}
                     {label}
                 </Link>
         </div>
