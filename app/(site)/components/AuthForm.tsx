@@ -22,7 +22,7 @@ const AuthForm : React.FC<AuthFormProps> = ({variant, setVariant}) => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     useEffect(()=>{
         if(session?.status === "authenticated"){
-            router.push("/home")
+            router.push("/pages/home")
         }
     }, [session?.status, router])
 
@@ -74,7 +74,7 @@ const AuthForm : React.FC<AuthFormProps> = ({variant, setVariant}) => {
                 }
 
                 if (callback?.ok && !callback?.error) {
-                    router.push('/home')
+                    router.push('/pages/home')
                     toast.success('Logged in!')
                 }
             })

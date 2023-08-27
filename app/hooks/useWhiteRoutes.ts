@@ -10,20 +10,20 @@ const useWhiteRoutes = () => {
     const routes = useMemo(() => [
         {
             label:"Contact Us",
-            href:"/contactus",
-            active:pathname === "/contactus",
+            href:"/pages/contactus",
+            active:pathname === "/pages/contactus",
             logo:IoMail,
         },
         {
             label:"Wishlist",
-            href:"/wishlist",
-            active:pathname === "/wishlist",
+            href:"/pages/wishlist",
+            active:pathname === "/pages/wishlist",
             logo:FaShoppingCart,
         },
         {
             label:"My Profile",
-            href:"/myprofile",
-            active:pathname === "/myprofile",
+            href:"/pages/myprofile",
+            active:pathname === "/pages/myprofile",
             logo:FaCircleUser,
         },
     ],[pathname])

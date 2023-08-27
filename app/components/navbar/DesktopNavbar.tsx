@@ -14,11 +14,12 @@ const DesktopNavbar = () => {
     const whiteRoutes = useWhiteRoutes()
     const router = useRouter()
     const handleClick = () => {
-        router.push("/home")
+        router.push("/pages/home")
     }
     const handleSignOut = () => {
         signOut();
     }
+    
     return ( 
     <div className='w-full lg:flex lg:flex-col lg:fixed lg:z-40'>
         <div className='w-full lg:flex hidden lg:left-0 lg:z-40 lg:bg-white lg:border-r-[1px] lg:pb-2 justify-between items-center px-6 pt-1'>
@@ -57,7 +58,7 @@ const DesktopNavbar = () => {
                     />
                 ))
             }
-            <div className='rounded-md p-3 text-sm leading-6 font-semibold text-gray-800 hover:bg-gray-800 hover:text-white transition' onClick={handleSignOut}>
+            <div className='rounded-md p-3 text-sm leading-6 font-semibold text-gray-800 hover:bg-gray-800 hover:text-white transition cursor-pointer' onClick={handleSignOut}>
                 <span>Sign Out</span>
             </div>
         </div>

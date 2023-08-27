@@ -7,23 +7,23 @@ const useRoutes = () => {
     const routes = useMemo(() => [
         {
             label:"Upcoming Treks",
-            href:"/upcoming",
-            active:pathname === "/upcoming"
+            href:"/pages/upcoming",
+            active:pathname === "/pages/upcoming"
         },
         {
             label:"Articles",
-            href:"/articles",
-            active:pathname === "/articles"
+            href:"/pages/articles",
+            active:pathname === "/pages/articles"
         },
         {
             label:"Our Story",
-            href:"/aboutus",
-            active:pathname === "/aboutus"
+            href:"/pages/aboutus",
+            active:pathname === "/pages/aboutus"
         },
         {
             label:"Rent/Buy Gears",
-            href:"/accessories",
-            active:pathname === "/accessories"
+            href:"/pages/accessories",
+            active:pathname === "/pages/accessories"
         },
     ],[pathname])
 
