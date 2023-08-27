@@ -29,17 +29,21 @@ const DesktopItem:React.FC<DesktopItemProps> = ({
                     hover:bg-gray-800
                     hover:text-white
                     transition
+                    flex
+                    items-center
+                    gap-2
                 `,
                 active && 'bg-gray-100 text-black'
                 )}
                 >
                     
-                    <span className="flex gap-2 items-center">
+                    {/* <div > */}
                     {
                         Logo ? <Logo /> : null
                     }
+                    {/* {label} */}
+                    {/* </div> */}
                     {label}
-                    </span>
                 </Link>
         </div>
      );
