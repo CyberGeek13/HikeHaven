@@ -12,7 +12,7 @@ const useNews = () => {
             But the Tulian Lake trek is changing this. We are anticipating this trek to become more popular with families and seniors.
             This season, we have only two more groups doing the Tulian Lake trek. But we plan to open more groups for this scenic trek in the monsoon of 2024.
             We will share more updates from the Tulian Lake trek right here.`,
-            date:new Date(),
+            date:"Aug 23, 6.00 p.m.",
         },
         {
             id: 2,
@@ -29,7 +29,7 @@ const useNews = () => {
             Aug 24: This team is on their way from Rishikesh to Karchhi.          
             “All Valley of Flowers groups are running on schedule. And we are expecting better weather in the coming days,” says Tilak Rawat, Experience Coordinator for the Valley of Flowers trek.         
             We are constantly receiving updates from our Valley of Flowers team. And we will keep posting all relevant information here.`,
-            date:new Date(),
+            date:"",
         },
         {
             id: 3,
@@ -40,7 +40,7 @@ const useNews = () => {
             The route from Ghangria to the Valley of Flowers is likely to open once the rainfall subsides.
             “There are high chances of encountering road blocks on the route from Rishikesh to Karchhi due to landslides in heavy rains,” cautions Tilak Rawat, Experience Coordinator for the Valley of Flowers trek. This may delay the team who is travelling on this route.
             We are constantly in touch with our teams, and we will keep posting relevant updates about the trek right here.`,
-            date:new Date(),
+            date:"",
         },
         {
             id: 4,
@@ -49,7 +49,7 @@ const useNews = () => {
             body:`A few days ago, Trek Purav Ajmera returned from the first Pin Bhaba Pass trek of the season. The photos he shared left us stunned!
             “I couldn't believe my eyes as I trekked from one day to the next. It was my 64th group as a Trek Leader. I have done multiple Himalayan treks, ranging from Kashmir to Himachal to Uttarakhand to Sikkim. But Pin Bhaba Pass is the grandest crossover trek I have done to date. There are very few treks that offer such variety in terms of change in landscapes, thrilling adventures, pretty campsites, and contrasting vistas,” he gushed, while sharing the photos.
             Simply put, these photos are an absolute must-see. They show you how the Pin Bhaba Pass trek offers a great mix of Kashmir and Ladakh landscapes.`,
-            date:new Date(),
+            date:"",
         },
         {
             id: 5,
@@ -60,7 +60,7 @@ const useNews = () => {
             Most of the waste consists of plastic packets and wrappers that do not weigh more than a fraction of a gram. Such flimsy plastic waste amounting to 1000 kg was lying strewn across in the mountains.           
             "Our trekkers and internal team members have done a back-breaking job, not only collecting every bit of litter, but segregating it too," shares Purav Ajmera, who is leading the Green Trails initiative at HikeHaven.           
             To keep the momentum going,  two new members have joined the Green Trails team -- Ankit Punekar & Satvik Rane. They will be working with us for the next three months to make trekking more sustainable and help us leave mountains better than we find them.`,
-            date:new Date(),
+            date:"",
         },
         {
             id: 6,
@@ -73,7 +73,7 @@ const useNews = () => {
             Today is the final day of one such training.           
             “I can see the positive impact of this training. Some of the guides are already stepping forward to take on more responsibilities,” shares Ashish Sukhadare, Trek Leader, who conducted this training for the guides.          
             We have more training related updates coming up. We will be posting all of them right here.`,
-            date:new Date(),
+            date:"",
         },
         {
             id: 7,
@@ -84,7 +84,7 @@ const useNews = () => {
             The tragedy is that we have had to turn down several schools and companies because we are short of team members, despite having 51 excellent Trek Leaders on our team.           
             Even as you read this update, ten new members are undergoing training at our office to be assistant trek leaders. Yet, we need at least 20 more Trek Leaders to take the scope of work forward.           
             If you’d like to apply, head over to this page - https://indiahikes.com/careers/`,
-            date:new Date(),
+            date:"",
         },
         {
             id: 8,
@@ -96,7 +96,7 @@ const useNews = () => {
             According to the rural police, almost 15 people have died so far while 50 others were injured at various waterfalls and forts around Pune and Mumbai. Recently, two Mumbai trekkers were rescued after a five-hour long rescue operation from Raigad district after they fell 200 feet. On the same day, two trekkers drowned at the Devkund waterfall, Bhira in Raigad district.  
             Though, several trekking organisations voluntarily come ahead to help the victims of such tragedies, the ever increasing number of the incidents is already taxing their resources.       
             Therefore, organisations like Shivdurga Mitra (Lonavala), Yashwanti Highkars (Khopoli), Nisargamitra (Panvel), Pimpri Chinchwad Mountaineering Association, Giripremi (Pune) and Vaintaiya Trekking Institute (Nashik), who actively participate in rescue operations, have come ahead and decided to take some severe action to curb the number of incidents.`,
-            date:new Date(),
+            date:"",
         },
     ],[])
 
