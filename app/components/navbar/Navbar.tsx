@@ -1,4 +1,5 @@
 import DesktopNavbar from "./DesktopNavbar";
+import Footer from '@/app/components/Footer'
 
 async function Navbar ({
     children
@@ -10,6 +11,7 @@ async function Navbar ({
             <DesktopNavbar />
             <main>
                 {children}
+                <Footer />
             </main>
         </div>
     );
