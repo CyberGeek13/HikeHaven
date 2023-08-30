@@ -5,6 +5,7 @@ import { BiLogoFacebook } from "react-icons/bi";
 import { BsStrava } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa"
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
     return ( 
@@ -23,7 +24,7 @@ const Footer = () => {
                 </div>
                 <div className="flex max-h-[7rem] text-white gap-[25px]">
                     <div className="flex flex-col">
-                        <Link href="/pages/aboutus" className="hover:text-gray-400">FAQs</Link>
+                        <Link href="/pages/aboutus" className="hover:text-gray-400 hover:underline">FAQs</Link>
                         <Link href="/pages/aboutus" className="hover:text-gray-400">About Us</Link>
                         <Link href="/pages/contactus" className="hover:text-gray-400">Contact Us</Link>
                         <Link href="/pages/aboutus" className="hover:text-gray-400">Work with us</Link>
@@ -31,8 +32,17 @@ const Footer = () => {
                     <div className="flex flex-col">
                         <Link href="/pages/aboutus" className="hover:text-gray-400">Terms and Conditions</Link>
                         <Link href="/pages/aboutus" className="hover:text-gray-400">Privacy Policy</Link>
-                        <Link href="/pages/aboutus" className="hover:text-gray-400">Disclaimer</Link>
+                        <Link href="/pages/aboutus" className="hover:text-gray-400"
+                            onClick={() => {
+                                window.open("https://docs.google.com/document/d/1miBIz8Z1vYiwplkCkimDigaDEmShxjYZc9jwjTgEcUs/edit?usp=sharing")
+                            }}
+                        >
+                            Disclaimer
+                        </Link>
                     </div>
+                </div>
+                <div className="text-[12px] text-gray-200">
+                © 2023 hikehaven.netlify.com <br />All images are copyrighted by their respective authors.
                 </div>
             </div>
             <div className="flex flex-col justify-between">
@@ -43,6 +53,7 @@ const Footer = () => {
                     <p className="text-white text-sm">Purav Ajmera - 8355849582</p>
                     <p className="text-white text-sm">Mon to Sat - 9.30 AM to 7.30 PM</p>
                     <p className="text-white text-sm">Sun - 9.30 AM to 6.30 PM</p>
+                    <Image alt='logo' src='/images/logo.png' height={110} width={110} className="mt-[20px] -ml-[14px]"/>
                 </div>
             </div>
         </div>
