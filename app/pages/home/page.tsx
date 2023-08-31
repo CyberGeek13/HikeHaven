@@ -3,17 +3,32 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import News from "./components/news/News";
+import { useRef } from "react";
+import TopScroller from "../../components/goToTop/TopScroller";
 
 const Home = () => {
     const router = useRouter();
+    const topSection = useRef<HTMLDivElement>(null);
 
     const btnClick=()=>{
         router.push("/upcoming");
     };
+
+    const scrollUp = () => {
+        if (!topSection.current) {
+            return;
+        }
+        window.scrollTo({
+          top: topSection.current.offsetTop,
+          behavior: 'smooth',
+        });
+    };
+
     return ( 
         
         <main>
-            <div className="relative">
+            <TopScroller clickHandler={scrollUp}/>
+            <div className="relative" ref={topSection}>
                 <Image alt="hero" src="/images/home_mountain.jpg" height={0} width={0} layout="responsive"/>
                 <div className="absolute top-[350px] left-[30px] font-bold text-6xl text-white text-center">India’s Largest & Safest Trekking Organisation</div>
                 <div className="absolute top-[550px] left-[120px] font-bold text-2xl text-white text-center">5,000+ Trust Our Transformative Trek Experience and Pioneering Safety Standards Each Year</div>
@@ -24,6 +39,7 @@ const Home = () => {
                 </div>
             </div>
             <News />
+            <p onClick={scrollUp}>Go To Top</p>
         </main>
     );
 }
