@@ -2,17 +2,13 @@ import { FaAngleUp } from 'react-icons/fa';
 import './styles.css'
 import { useState, useEffect } from 'react';
 
-const TopScroller = (props) => {
-    const scrollUp = () => {
-        if (!topSection.current) {
-            return;
-        }
-        window.scrollTo({
-          top: topSection.current.offsetTop,
-          behavior: 'smooth',
-        });
-    };
+interface TopScrollerProps{
+    clickHandler: () => void;
+}
 
+const TopScroller: React.FC<TopScrollerProps> = ({
+    clickHandler
+}) => {
     const [showTopBtn, setShowTopBtn] = useState(false);
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -28,7 +24,7 @@ const TopScroller = (props) => {
         <div className="top-to-btm">
             {
                 showTopBtn &&
-                <FaAngleUp className="icon-position icon-style" onClick={props.clickHandler}/>
+                <FaAngleUp className="icon-position icon-style" onClick={clickHandler}/>
             }
         </div>
      );
