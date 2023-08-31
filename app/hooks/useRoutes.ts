@@ -18,6 +18,16 @@ const useRoutes = () => {
         {
             label:"Our Story",
             href:"/pages/aboutus",
+            options: [
+                {
+                    label:"About Us",
+                    href:"/pages/aboutus"
+                },
+                {
+                    label:"Our Team",
+                    href:"/pages/team"
+                }
+            ],
             active:pathname === "/pages/aboutus"
         },
         {

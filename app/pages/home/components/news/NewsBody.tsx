@@ -8,6 +8,7 @@ interface NewsBodyProps {
     img: string;
     body: string;
     date: string;
+    showBtn: boolean;
 }
 
 const NewsBody: React.FC<NewsBodyProps> = ({
@@ -15,7 +16,8 @@ const NewsBody: React.FC<NewsBodyProps> = ({
     title,
     img,
     body,
-    date
+    date,
+    showBtn
 }) => {
     return ( 
         <div className="w-fit">
@@ -28,7 +30,14 @@ const NewsBody: React.FC<NewsBodyProps> = ({
             </div>
             <div>{date}</div>
             <br />
-            {body}
+            {body} <br />
+            {
+                showBtn && (
+                    <button className="bg-primary font-serif px-[7px] py-[10px] mt-[20px] mb-[30px] rounded-md hover:bg-gray-300 hover:shadow-xl transition duration-200">
+                        Read More
+                    </button>
+                )
+            }
         </div>
      );
 }

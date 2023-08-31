@@ -39,7 +39,6 @@ const Home = () => {
                 </div>
             </div>
             <News />
-            <p onClick={scrollUp}>Go To Top</p>
         </main>
     );
 }

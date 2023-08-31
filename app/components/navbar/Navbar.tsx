@@ -9,10 +9,10 @@ async function Navbar ({
     return (
         <div className="w-full flex flex-col">
             <DesktopNavbar />
-            <main>
+            <main className="min-h-[80vh]">
                 {children}
-                <Footer />
             </main>
+            <Footer />
         </div>
     );
 }
