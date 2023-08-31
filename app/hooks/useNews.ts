@@ -13,6 +13,7 @@ const useNews = () => {
             This season, we have only two more groups doing the Tulian Lake trek. But we plan to open more groups for this scenic trek in the monsoon of 2024.
             We will share more updates from the Tulian Lake trek right here.`,
             date:"27th August, 2023",
+            showBtn: true
         },
         {
             id: 2,
@@ -30,6 +31,7 @@ const useNews = () => {
             “All Valley of Flowers groups are running on schedule. And we are expecting better weather in the coming days,” says Tilak Rawat, Experience Coordinator for the Valley of Flowers trek.         
             We are constantly receiving updates from our Valley of Flowers team. And we will keep posting all relevant information here.`,
             date:"26th August, 2023",
+            showBtn: false
         },
         {
             id: 3,
@@ -41,6 +43,7 @@ const useNews = () => {
             “There are high chances of encountering road blocks on the route from Rishikesh to Karchhi due to landslides in heavy rains,” cautions Tilak Rawat, Experience Coordinator for the Valley of Flowers trek. This may delay the team who is travelling on this route.
             We are constantly in touch with our teams, and we will keep posting relevant updates about the trek right here.`,
             date:"20th August, 2023",
+            showBtn: true
         },
         {
             id: 4,
@@ -50,6 +53,7 @@ const useNews = () => {
             “I couldn't believe my eyes as I trekked from one day to the next. It was my 64th group as a Trek Leader. I have done multiple Himalayan treks, ranging from Kashmir to Himachal to Uttarakhand to Sikkim. But Pin Bhaba Pass is the grandest crossover trek I have done to date. There are very few treks that offer such variety in terms of change in landscapes, thrilling adventures, pretty campsites, and contrasting vistas,” he gushed, while sharing the photos.
             Simply put, these photos are an absolute must-see. They show you how the Pin Bhaba Pass trek offers a great mix of Kashmir and Ladakh landscapes.`,
             date:"10th August, 2023",
+            showBtn: false
         },
         {
             id: 5,
@@ -61,6 +65,7 @@ const useNews = () => {
             "Our trekkers and internal team members have done a back-breaking job, not only collecting every bit of litter, but segregating it too," shares Purav Ajmera, who is leading the Green Trails initiative at HikeHaven.           
             To keep the momentum going,  two new members have joined the Green Trails team -- Ankit Punekar & Satvik Rane. They will be working with us for the next three months to make trekking more sustainable and help us leave mountains better than we find them.`,
             date:"04th August, 2023",
+            showBtn: false
         },
         {
             id: 6,
@@ -74,6 +79,7 @@ const useNews = () => {
             “I can see the positive impact of this training. Some of the guides are already stepping forward to take on more responsibilities,” shares Ashish Sukhadare, Trek Leader, who conducted this training for the guides.          
             We have more training related updates coming up. We will be posting all of them right here.`,
             date:"30th July, 2023",
+            showBtn: false
         },
         {
             id: 7,
@@ -85,6 +91,7 @@ const useNews = () => {
             Even as you read this update, ten new members are undergoing training at our office to be assistant trek leaders. Yet, we need at least 20 more Trek Leaders to take the scope of work forward.           
             If you’d like to apply, head over to this page - https://indiahikes.com/careers/`,
             date:"24th July, 2023",
+            showBtn: false
         },
         {
             id: 8,
@@ -97,6 +104,7 @@ const useNews = () => {
             Though, several trekking organisations voluntarily come ahead to help the victims of such tragedies, the ever increasing number of the incidents is already taxing their resources.       
             Therefore, organisations like Shivdurga Mitra (Lonavala), Yashwanti Highkars (Khopoli), Nisargamitra (Panvel), Pimpri Chinchwad Mountaineering Association, Giripremi (Pune) and Vaintaiya Trekking Institute (Nashik), who actively participate in rescue operations, have come ahead and decided to take some severe action to curb the number of incidents.`,
             date:"14th July, 2023",
+            showBtn: true
         },
     ],[])
 
