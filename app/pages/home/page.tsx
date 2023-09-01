@@ -5,10 +5,13 @@ import Image from "next/image";
 import News from "./components/news/News";
 import { useRef } from "react";
 import TopScroller from "../../components/goToTop/TopScroller";
+import FAQ from "@/app/components/faq/FAQ";
+import useFAQ from "@/app/hooks/useFAQ";
 
 const Home = () => {
     const router = useRouter();
     const topSection = useRef<HTMLDivElement>(null);
+    const faq = useFAQ();
 
     const btnClick=()=>{
         router.push("/upcoming");
@@ -39,6 +42,21 @@ const Home = () => {
                 </div>
             </div>
             <News />
+            <FAQ question="what is a question?" answer="this was a question.alsjdalksjdalksjdaklsd alskdjalskdjalksjdas alsdjalskdjaksldjaklsdja lkadalkdjalksdjkalsd alkdjakldjak"/>
+            {/* FAQ section */}
+            <div>
+                <h1 className="text-[60px] font-semibold ml-7 font-serif">FAQ</h1>
+                <div className="w-[98vw] px-7">
+                    <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
+                </div>
+                <div className="flex flex-col items-center max-w-[900px] gap-[30px] w-[100vw]">
+                    {
+                        faq.map(q => (
+                            <FAQ key={q.id} question={q.question} answer={q.answer}/>
+                        ))
+                    }
+                </div>
+            </div>
         </main>
     );
 }
