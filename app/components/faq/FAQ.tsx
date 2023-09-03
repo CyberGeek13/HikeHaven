@@ -1,11 +1,11 @@
 'use client';
 
 import clsx from "clsx";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 interface FAQProps{
     question: string;
-    answer: string;
+    answer: ReactNode;
 }
 
 const FAQ: React.FC<FAQProps> = ({
