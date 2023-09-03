@@ -89,7 +89,7 @@ const useNews = () => {
             This is a growing need because not only are we actively exploring treks (we have opened six new treks this year), but our Experiential Learning Division has also been growing. Word has gotten out about the team-building and outdoor learning programmes that we offer to schools, colleges, and companies.       
             The tragedy is that we have had to turn down several schools and companies because we are short of team members, despite having 51 excellent Trek Leaders on our team.           
             Even as you read this update, ten new members are undergoing training at our office to be assistant trek leaders. Yet, we need at least 20 more Trek Leaders to take the scope of work forward.           
-            If you’d like to apply, head over to this page - https://indiahikes.com/careers/`,
+            If you’d like to apply, head over to this page - https://forms.gle/7UsVJ3GL1gV7auZo7`,
             date:"24th July, 2023",
             showBtn: true
         },
