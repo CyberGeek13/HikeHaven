@@ -17,19 +17,19 @@ import { nanoid } from 'nanoid'
 
     const CustomPrevArrow = (props:any) => (
         <div
-        className=" top-1/2 left-4 transform -translate-y-1/2 cursor-pointer text-xl text-gray-600 z-30"
+        className="absolute top-1/3 right-5 transform -translate-y-1/2 cursor-pointer text-xl text-gray-600 z-30 bg-gray-400 p-3 rounded-full hover:bg-primary hover:text-black hover:rounded-md transition-all duration-200"
         onClick={props.onClick}
         >
-        &larr; Previous
+        &larr;
         </div>
     );
 
     const CustomNextArrow = (props:any) => (
         <div
-        className="top-1/2 right-4 transform cursor-pointer text-xl text-gray-600"
+        className="absolute bottom-1/3 right-4 transform cursor-pointer text-xl text-gray-600 bg-gray-400 p-3 rounded-full hover:bg-primary hover:text-black hover:rounded-md transition-all duration-200"
         onClick={props.onClick}
         >
-        Next &rarr;
+        &rarr;
         </div>
     );
 
@@ -53,7 +53,7 @@ const Home = () => {
     }, [selectedHikes])
 
     const btnClick=()=>{
-        router.push("/upcoming");
+        router.push("/pages/upcoming");
     };
 
     const scrollUp = () => {
@@ -79,21 +79,29 @@ const Home = () => {
     };
 
     const handleDateClick = (hike:any, date:any) => {
-        if(selectedHikes.find((h:any) => h.id === hike.id && h.date === date)) {
-            const data = selectedHikes.filter((h:any) => !(h.id === hike.id && h.date === date))
+        if(selectedHikes.find((h:any) => h.id === hike.id)) {
+            const foundDate = selectedHikes.find((h:any) => h.id === hike.id && h.date === date)
+            let data = selectedHikes.filter((h:any) => !(h.id === hike.id))
             localStorage.setItem('hikes', JSON.stringify(data))
+            if(foundDate.date === date) {
+                toast.error('Hike removed successfully')
+                setSelectedHikes(data)
+                return;
+            }
+            data = [...data, {id: hike.id, date: date}]
+            localStorage.setItem('hikes', JSON.stringify(data))
+            toast.success('Date changed successfully')
             setSelectedHikes(data)
-            toast.success(`You have unselected ${hike.name} on ${date}`);
             return;
         }
 
-        toast.success(`You have selected ${hike.name} on ${hike.availDates[0]}`);
         const data = {
             id: hike.id,
             date: date
         }
         localStorage.setItem('hikes', JSON.stringify([...selectedHikes, data]))
         setSelectedHikes([...selectedHikes, data])
+        toast.success('Hike added successfully')
     }
 
     return ( 
@@ -134,7 +142,7 @@ const Home = () => {
                                             </div>
                                         </div>
                                         <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
-                                            <div className="text-[25px] mt-[15px] font-semibold">{hike.name}</div>
+                                            <div className="text-[25px] mt-[25px] font-semibold">{hike.name}</div>
                                             <div className="text-[15px] font-semibold">{hike.location}</div>
                                             <div className="text-[15px] font-semibold">Rs {hike.price}</div>
                                             <div className="flex flex-col gap-2 mt-[7px]">
@@ -155,9 +163,9 @@ const Home = () => {
                                             </div>
                                             {
                                                 selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                                    <div className="text-[15px] font-semibold text-green-500">Selected</div>
+                                                    <div className="text-[15px] font-semibold text-green-500 mt-[10px]">Selected</div>
                                                 ) : (
-                                                    <div className="text-[15px] font-semibold text-gray-500">Click on date to select</div>
+                                                    <div className="text-[15px] font-semibold text-gray-500 mt-[10px]">Click on date to select</div>
                                                 )
                                             }
                                         </div>
