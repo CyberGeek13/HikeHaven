@@ -53,7 +53,8 @@ const useNews = () => {
             “I couldn't believe my eyes as I trekked from one day to the next. It was my 64th group as a Trek Leader. I have done multiple Himalayan treks, ranging from Kashmir to Himachal to Uttarakhand to Sikkim. But Pin Bhaba Pass is the grandest crossover trek I have done to date. There are very few treks that offer such variety in terms of change in landscapes, thrilling adventures, pretty campsites, and contrasting vistas,” he gushed, while sharing the photos.
             Simply put, these photos are an absolute must-see. They show you how the Pin Bhaba Pass trek offers a great mix of Kashmir and Ladakh landscapes.`,
             date:"10th August, 2023",
-            showBtn: true
+            showBtn: true,
+            btnText: "View Gallery",
         },
         {
             id: 5,
@@ -79,7 +80,8 @@ const useNews = () => {
             “I can see the positive impact of this training. Some of the guides are already stepping forward to take on more responsibilities,” shares Ashish Sukhadare, Trek Leader, who conducted this training for the guides.          
             We have more training related updates coming up. We will be posting all of them right here.`,
             date:"30th July, 2023",
-            showBtn: true
+            showBtn: true,
+            btnText: "Read More",
         },
         {
             id: 7,
@@ -91,7 +93,8 @@ const useNews = () => {
             Even as you read this update, ten new members are undergoing training at our office to be assistant trek leaders. Yet, we need at least 20 more Trek Leaders to take the scope of work forward.           
             If you’d like to apply, head over to this page - https://indiahikes.com/careers/`,
             date:"24th July, 2023",
-            showBtn: true
+            showBtn: true,
+            btnText: "Apply Now",
         },
         {
             id: 8,

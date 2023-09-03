@@ -30,7 +30,7 @@ const NewsList = () => {
                     </div>
                 ))}
             </div>
-            <NewsBody id={currentNews.id} title={currentNews.title} body={currentNews.body} img={currentNews.img} date={currentNews.date} showBtn={currentNews.showBtn}/>
+            <NewsBody id={currentNews.id} title={currentNews.title} body={currentNews.body} img={currentNews.img} date={currentNews.date} showBtn={currentNews.showBtn} btnText={currentNews.btnText}/>
         </div>
      );
 }
