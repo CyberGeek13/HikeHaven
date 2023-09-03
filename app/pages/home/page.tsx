@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import News from "./components/news/News";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import TopScroller from "../../components/goToTop/TopScroller";
 import FAQ from "@/app/components/faq/FAQ";
 import useFAQ from "@/app/hooks/useFAQ";
@@ -13,6 +13,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import useHikes from "@/app/hooks/useHikes";
 import clsx from "clsx";
 import { toast } from "react-hot-toast";
+import { nanoid } from 'nanoid'
 
     const CustomPrevArrow = (props:any) => (
         <div
@@ -37,6 +38,19 @@ const Home = () => {
     const topSection = useRef<HTMLDivElement>(null);
     const faq = useFAQ();
     const hikes = useHikes();
+
+    const [selectedHikes, setSelectedHikes] = useState<any>([]);
+
+    useEffect(() => {
+        const hikes = localStorage.getItem('hikes')
+        if (hikes) {
+            setSelectedHikes(JSON.parse(hikes))
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log(selectedHikes);
+    }, [selectedHikes])
 
     const btnClick=()=>{
         router.push("/upcoming");
@@ -64,8 +78,22 @@ const Home = () => {
         nextArrow: <CustomNextArrow />,
     };
 
-    const handleDateClick = (hike:any) => {
+    const handleDateClick = (hike:any, date:any) => {
+        if(selectedHikes.find((h:any) => h.id === hike.id && h.date === date)) {
+            const data = selectedHikes.filter((h:any) => !(h.id === hike.id && h.date === date))
+            localStorage.setItem('hikes', JSON.stringify(data))
+            setSelectedHikes(data)
+            toast.success(`You have unselected ${hike.name} on ${date}`);
+            return;
+        }
+
         toast.success(`You have selected ${hike.name} on ${hike.availDates[0]}`);
+        const data = {
+            id: hike.id,
+            date: date
+        }
+        localStorage.setItem('hikes', JSON.stringify([...selectedHikes, data]))
+        setSelectedHikes([...selectedHikes, data])
     }
 
     return ( 
@@ -80,21 +108,6 @@ const Home = () => {
                     <button onClick={btnClick} className="text-black font-semibold bg-[#ffd11a] p-[10px] rounded-[6px] hover:bg-gray-300 hover:text-black transition">
                         View Upcoming Treks
                     </button>
-                </div>
-            </div>
-            <News />
-            {/* FAQ section */}
-            <div>
-                <h1 className="text-[60px] font-semibold ml-7 font-serif">FAQ</h1>
-                <div className="w-[98vw] px-7">
-                    <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
-                </div>
-                <div className="flex flex-wrap items-center justify-center w-full gap-[30px] mb-[30px]">
-                    {
-                        faq.map(q => (
-                            <FAQ key={q.id} question={q.question} answer={q.answer}/>
-                        ))
-                    }
                 </div>
             </div>
             {/* Upcoming Treks */}
@@ -128,20 +141,46 @@ const Home = () => {
                                             {
                                                 hike.availDates.map(data => (
                                                     <div 
-                                                        className="bg-gray-200 text-black p-[3px] w-[250px] text-md font-serif cursor-pointer shadow-md hover:shadow-lg transition-all duration-100 hover:bg-gray-300"
-                                                        onClick={() => handleDateClick(hike)}
+                                                        className={clsx(
+                                                            "bg-gray-200 text-black p-[3px] w-[250px] text-md font-serif cursor-pointer shadow-md hover:shadow-lg transition-all duration-100 hover:bg-gray-300 px-[10px]",
+                                                            selectedHikes.find((h:any) => h.id === hike.id && h.date === data) ? 'bg-green-500 text-white hover:bg-green-600' : ''
+                                                        )}
+                                                        onClick={() => handleDateClick(hike, data)}
+                                                        key={nanoid()}
                                                     >
                                                         {data}
                                                     </div>
                                                 ))
                                             }
                                             </div>
+                                            {
+                                                selectedHikes.find((h:any) => h.id === hike.id) ? (
+                                                    <div className="text-[15px] font-semibold text-green-500">Selected</div>
+                                                ) : (
+                                                    <div className="text-[15px] font-semibold text-gray-500">Click on date to select</div>
+                                                )
+                                            }
                                         </div>
                                     </div>
                                 </div>
                             ))
                         }
                     </Slider>
+                </div>
+            </div>
+            <News />
+            {/* FAQ section */}
+            <div>
+                <h1 className="text-[60px] font-semibold ml-7 font-serif">FAQ</h1>
+                <div className="w-[98vw] px-7">
+                    <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
+                </div>
+                <div className="flex flex-wrap items-center justify-center w-full gap-[30px] mb-[30px]">
+                    {
+                        faq.map(q => (
+                            <FAQ key={q.id} question={q.question} answer={q.answer}/>
+                        ))
+                    }
                 </div>
             </div>
         </main>
