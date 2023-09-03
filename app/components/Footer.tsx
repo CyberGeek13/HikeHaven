@@ -39,7 +39,7 @@ const Footer = () => {
                 </div>
                 <div className="flex max-h-[7rem] text-white gap-[25px]">
                     <div className="flex flex-col">
-                        <Link href="/pages/aboutus" className="hover:text-gray-400 hover:underline">FAQs</Link>
+                        <Link href="/pages/faq" className="hover:text-gray-400 hover:underline">FAQs</Link>
                         <Link href="/pages/aboutus" className="hover:text-gray-400 hover:underline">About Us</Link>
                         <Link href="/pages/contactus" className="hover:text-gray-400 hover:underline">Contact Us</Link>
                         <Link href="/pages/aboutus" className="hover:text-gray-400 hover:underline"

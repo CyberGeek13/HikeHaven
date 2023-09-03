@@ -9,6 +9,7 @@ interface NewsBodyProps {
     body: string;
     date: string;
     showBtn: boolean;
+    btnText?: string;
 }
 
 const NewsBody: React.FC<NewsBodyProps> = ({
@@ -17,8 +18,14 @@ const NewsBody: React.FC<NewsBodyProps> = ({
     img,
     body,
     date,
-    showBtn
+    showBtn,
+    btnText
 }) => {
+    const handleBtnClick = () => {
+        if(btnText === "Apply Now") {
+            window.open('https://forms.gle/Rc4besn8cYJqJnse8')
+        }
+    }
     return ( 
         <div className="w-fit">
             <div className="flex justify-center">
@@ -33,8 +40,8 @@ const NewsBody: React.FC<NewsBodyProps> = ({
             {body} <br />
             {
                 showBtn && (
-                    <button className="bg-primary font-serif px-[7px] py-[10px] mt-[20px] mb-[30px] rounded-md hover:bg-gray-300 hover:shadow-xl transition duration-200">
-                        Read More
+                    <button className="bg-primary font-serif px-[7px] py-[10px] mt-[20px] mb-[30px] rounded-md hover:bg-gray-300 hover:shadow-xl transition duration-200" onClick={handleBtnClick}>
+                        {btnText}
                     </button>
                 )
             }
