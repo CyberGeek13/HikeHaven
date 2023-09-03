@@ -2,6 +2,7 @@ import useNews from "@/app/hooks/useNews";
 import { useEffect, useState } from "react";
 import NewsBody from "./NewsBody";
 import clsx from "clsx";
+import { nanoid } from "nanoid";
 
 const NewsList = () => {
     const news = useNews();
@@ -11,7 +12,7 @@ const NewsList = () => {
         <div className="flex gap-10 px-7">
             <div className="flex flex-col gap-5 bg-white p-[10px] rounded-md shadow-lg">
                 {news.map((newsItem) => (
-                    <div className="flex flex-col gap-2 max-w-[450px] hover:underline cursor-pointer">
+                    <div className="flex flex-col gap-2 max-w-[450px] hover:underline cursor-pointer" key={nanoid()}>
                         <div className="flex gap-2">
                             {
                                 currentNews.id === newsItem.id && (
