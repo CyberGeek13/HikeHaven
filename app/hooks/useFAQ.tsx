@@ -5,25 +5,29 @@ const useFAQ = () => {
         {
             id: 1,
             question: "Which are the best treks in Maharashtra to do from June to October?",
-            answer: `India and the state of Maharashtra offer some beautiful trekking opportunities from June to October, especially in the Western Ghats and the Himalayan region. Here are some of the best treks to consider during this time in Maharashtra:
+            answer: (
+                <>
+                    India and the state of Maharashtra offer some beautiful trekking opportunities from June to October, especially in the Western Ghats and the Himalayan region. Here are some of the best treks to consider during this time in Maharashtra: <br />
 
-            Harishchandragad Trek: Located in the Western Ghats, Harishchandragad is famous for its Konkan Kada cliff, a challenging trek with breathtaking views. The monsoon season transforms the region into a lush green paradise. It's best done from June to September.
-            
-            Rajmachi Trek: Rajmachi is a historic hill fort near Lonavala, Maharashtra. The trek takes you through dense forests and offers stunning views of the Sahyadri Mountains. This trek is suitable from June to October.
-            
-            Kalsubai Trek: Kalsubai is the highest peak in Maharashtra. The trek can be done year-round but is especially beautiful during the monsoon when the surroundings are covered in vibrant greenery.
-            
-            Lohagad Trek: Lohagad is an easily accessible trek near Lonavala. It's a great option for beginners and offers panoramic views of the Sahyadri range. Trekking here is possible from June to October.
-            
-            Torna Fort Trek: Torna Fort is historically significant and offers a fantastic trekking experience. The monsoon season makes the surroundings lush, and the fort comes alive with greenery. Best done from June to September.
-            
-            Sinhagad Trek: Located near Pune, Sinhagad is a popular trekking spot. The monsoon season adds charm to the trek with its misty atmosphere and green landscapes. It's accessible from June to September.
-            
-            Bhimashankar Trek: Bhimashankar is not only a revered temple but also a trekking destination known for its biodiversity. The trek is best done during the monsoon season when the hills are covered in lush greenery.
-            
-            Andharban Trek: Known as the "Dark Forest," this trek takes you through dense forests in the Sahyadri range. The monsoon season brings out the beauty of the forest with numerous waterfalls and streams.
-            
-            Please note that trekking in the Western Ghats during the monsoon season can be challenging due to heavy rainfall and slippery trails. It's essential to take necessary precautions, wear appropriate trekking gear, and be prepared for changing weather conditions. Additionally, always check for local guidelines, permissions, and the current status of the trek before embarking on your adventure.`
+                    <b>Harishchandragad Trek</b>: Located in the Western Ghats, Harishchandragad is famous for its Konkan Kada cliff, a challenging trek with breathtaking views. The monsoon season transforms the region into a lush green paradise. It's best done from June to September. <br />
+
+                    Rajmachi Trek: Rajmachi is a historic hill fort near Lonavala, Maharashtra. The trek takes you through dense forests and offers stunning views of the Sahyadri Mountains. This trek is suitable from June to October. <br />
+
+                    Kalsubai Trek: Kalsubai is the highest peak in Maharashtra. The trek can be done year-round but is especially beautiful during the monsoon when the surroundings are covered in vibrant greenery. <br />
+
+                    Lohagad Trek: Lohagad is an easily accessible trek near Lonavala. It's a great option for beginners and offers panoramic views of the Sahyadri range. Trekking here is possible from June to October. <br />
+
+                    Torna Fort Trek: Torna Fort is historically significant and offers a fantastic trekking experience. The monsoon season makes the surroundings lush, and the fort comes alive with greenery. Best done from June to September. <br />
+
+                    Sinhagad Trek: Located near Pune, Sinhagad is a popular trekking spot. The monsoon season adds charm to the trek with its misty atmosphere and green landscapes. It's accessible from June to September. <br />
+
+                    Bhimashankar Trek: Bhimashankar is not only a revered temple but also a trekking destination known for its biodiversity. The trek is best done during the monsoon season when the hills are covered in lush greenery. <br />
+
+                    Andharban Trek: Known as the "Dark Forest," this trek takes you through dense forests in the Sahyadri range. The monsoon season brings out the beauty of the forest with numerous waterfalls and streams. <br />
+
+                    Please note that trekking in the Western Ghats during the monsoon season can be challenging due to heavy rainfall and slippery trails. It's essential to take necessary precautions, wear appropriate trekking gear, and be prepared for changing weather conditions. Additionally, always check for local guidelines, permissions, and the current status of the trek before embarking on your adventure.
+                </>
+            )
         },
         {
             id: 2,
