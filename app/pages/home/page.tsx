@@ -42,14 +42,13 @@ const Home = () => {
                 </div>
             </div>
             <News />
-            <FAQ question="what is a question?" answer="this was a question.alsjdalksjdalksjdaklsd alskdjalskdjalksjdas alsdjalskdjaksldjaklsdja lkadalkdjalksdjkalsd alkdjakldjak"/>
             {/* FAQ section */}
             <div>
                 <h1 className="text-[60px] font-semibold ml-7 font-serif">FAQ</h1>
                 <div className="w-[98vw] px-7">
                     <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
                 </div>
-                <div className="flex flex-col items-center max-w-[900px] gap-[30px] w-[100vw]">
+                <div className="flex flex-wrap items-center justify-center w-full gap-[30px] mb-[30px]">
                     {
                         faq.map(q => (
                             <FAQ key={q.id} question={q.question} answer={q.answer}/>

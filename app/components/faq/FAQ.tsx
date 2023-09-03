@@ -14,7 +14,7 @@ const FAQ: React.FC<FAQProps> = ({
 }) => {
     const [isOpen, setIsOpen] = useState(false)
     return ( 
-        <div className="bg-primary w-[400px]">
+        <div className="bg-primary w-[600px]">
             <div onClick={() => setIsOpen(option => !option)}>
                 <div className="flex justify-between items-center p-[10px]">
                     <h3 className="text-lg font-semibold">
