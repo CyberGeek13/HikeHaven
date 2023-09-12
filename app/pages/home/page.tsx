@@ -191,7 +191,7 @@ const Home = () => {
                     }
                 </div>
                 <div className="flex justify-center mb-[30px]">
-                    <button className="bg-primary px-[20px] py-[7px] hover:bg-black hover:bg-opacity-10" onClick={() => router.push('/pages/faq')}>
+                    <button className="bg-primary px-[20px] py-[7px] hover:bg-black hover:bg-opacity-10 font-serif font-semibold" onClick={() => router.push('/pages/faq')}>
                         View More FAQs
                     </button>
                 </div>

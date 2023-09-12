@@ -14,12 +14,13 @@ const FAQ: React.FC<FAQProps> = ({
 }) => {
     const [isOpen, setIsOpen] = useState(false)
     return ( 
-        <div className="bg-primary w-[600px] text-sm font-serif">
+        <div className="bg-primary w-[600px] text-sm font-serif cursor-pointer mt-2">
             <div onClick={() => setIsOpen(option => !option)}>
                 <div className="flex justify-between items-center p-[10px]">
                     <h3 className="font-semibold">
                         {question}
                     </h3>
+                    <h3><b>+</b></h3>
                 </div>
             </div>
             <div className={clsx(

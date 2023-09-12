@@ -4,16 +4,16 @@ const useHikes = () => {
     const hikes = useMemo(() => [
         {
             id: 1,
-            name: "Hike 1",
-            description: "Hike 1 description",
-            location: "Maharashtra",
+            name: "Harishchandragad",
+            description: "Conquer the Heights of Harishchandragad",
+            location: "Western Ghats, Maharashtra",
             distance: 10,
             elevation: 1000,
-            price: 100,
+            price: "1,199/-",
             date: "2021-01-01",
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",
-            image: "https://images.unsplash.com/reserve/91JuTaUSKaMh2yjB1C4A_IMG_9284.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+            image: "https://images.unsplash.com/photo-1550486686-a496af34a2d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
             tags: "maharashtra"
         },
         {
