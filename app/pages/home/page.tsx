@@ -14,6 +14,8 @@ import useHikes from "@/app/hooks/useHikes";
 import clsx from "clsx";
 import { toast } from "react-hot-toast";
 import { nanoid } from 'nanoid'
+import WhyChooseUs from "./components/WhyChooseUs";
+import BottomForum from "./components/BottomForum";
 
     const CustomPrevArrow = (props:any) => (
         <div
@@ -196,6 +198,8 @@ const Home = () => {
                     </button>
                 </div>
             </div>
+            <WhyChooseUs />
+            <BottomForum />
         </main>
     );
 }
