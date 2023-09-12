@@ -80,8 +80,7 @@ const useNews = () => {
             “I can see the positive impact of this training. Some of the guides are already stepping forward to take on more responsibilities,” shares Ashish Sukhadare, Trek Leader, who conducted this training for the guides.          
             We have more training related updates coming up. We will be posting all of them right here.`,
             date:"30th July, 2023",
-            showBtn: true,
-            btnText: "Read More",
+            showBtn: false,
         },
         {
             id: 7,

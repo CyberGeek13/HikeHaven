@@ -13,6 +13,16 @@ const useRoutes = () => {
         {
             label:"Articles",
             href:"/pages/articles",
+            options: [
+                {
+                    label:"FAQs",
+                    href:"/pages/faq"
+                },
+                {
+                    label:"Photo Gallery",
+                    href:"/pages/gallery"
+                }
+            ],
             active:pathname === "/pages/articles"
         },
         {
