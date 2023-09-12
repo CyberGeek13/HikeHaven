@@ -19,13 +19,7 @@ const useWhiteRoutes = () => {
             href:"/pages/wishlist",
             active:pathname === "/pages/wishlist",
             logo:FaShoppingCart,
-        },
-        {
-            label:"My Profile",
-            href:"/pages/myprofile",
-            active:pathname === "/pages/myprofile",
-            logo:FaCircleUser,
-        },
+        }
     ],[pathname])
 
     return routes;

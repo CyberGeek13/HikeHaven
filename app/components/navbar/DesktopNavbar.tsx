@@ -4,12 +4,23 @@ import useRoutes from '@/app/hooks/useRoutes';
 import Image from 'next/image';
 import DesktopItem from './DesktopItem';
 import { signOut } from "next-auth/react";
-import {useRouter} from 'next/navigation';
+import {usePathname, useRouter} from 'next/navigation';
 import useWhiteRoutes from '@/app/hooks/useWhiteRoutes';
 import { FaSearch } from 'react-icons/fa';
+import getCurrentUser from '@/app/actions/getCurrentUser';
+import CurrentUser from './CurrentUser';
+import { User } from '@prisma/client';
+import { FaCircleUser } from 'react-icons/fa6';
+
+interface DesktopNavbarProps {
+    user: any
+}
 
 
-const DesktopNavbar = () => {
+const DesktopNavbar:React.FC<DesktopNavbarProps> = async ({
+    user
+}) => {
+    const pathname = usePathname();
     const routes = useRoutes()
     const whiteRoutes = useWhiteRoutes()
     const router = useRouter()
@@ -34,6 +45,13 @@ const DesktopNavbar = () => {
                         logo={item.logo}
                     />
                 ))
+            }
+            {
+                user.email ? (
+                    <CurrentUser user={user}/>
+                ) : (
+                    <DesktopItem label="My Profile" href='/pages/myprofile' active={pathname === "/pages/myprofile"} logo={FaCircleUser}/>
+                )
             }
             <div className="relative">
       <input
