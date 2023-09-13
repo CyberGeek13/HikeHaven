@@ -16,16 +16,16 @@ const Member: React.FC<MemberProps> = ({
     description
 }) => {
     return ( 
-        <div className="w-[300px] p-[30px] rounded-md bg-gray-400 flex flex-col justify-center items-center gap-[20px]">
+        <div className="w-[300px] p-[30px] rounded-md bg-gray-100 shadow-lg hover:shadow-2xl transition duration-200 flex flex-col justify-center items-center gap-[20px]">
             <div>
-                <Image alt="user" src="/images/placeholder.jpg" height={150} width={150} className="rounded-full"/>
+                <Image alt="user" src={image} height={150} width={150} className="rounded-xl"/>
             </div>
             <div className="flex flex-col gap-[5px]">
-                <span className="text-lg font-bold">John Doe</span>
-                <span className="text-sm">CEO</span>
+                <span className="text-lg font-bold">{name}</span>
+                <span className="text-sm">{position}</span>
             </div>
             <div>
-                Do your job wisely and don't forget to smile.
+                {quote}
             </div>
         </div>
      );

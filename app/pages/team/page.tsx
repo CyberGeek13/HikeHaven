@@ -1,16 +1,22 @@
+import useTeam from "@/app/hooks/useTeam";
 import Member from "./components/Member";
 
 const Team = () => {
+    const team = useTeam();
     return ( 
         <div className="mt-[120px] flex flex-wrap justify-center gap-[30px] p-[100px]">
-            <Member />
-            <Member />
-            <Member />
-            <Member />
-            <Member />
-            <Member />
-            <Member />
-            <Member />
+            {
+                team.map(member => (
+                    <Member 
+                        key={member.name}
+                        name={member.name}
+                        position={member.position}
+                        image={member.image}
+                        quote={member.quote}
+                        description={member.description}
+                    />
+                ))
+            }
         </div>
      );
 }
