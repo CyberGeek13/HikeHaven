@@ -17,7 +17,7 @@ interface DesktopNavbarProps {
 }
 
 
-const DesktopNavbar:React.FC<DesktopNavbarProps> = async ({
+const DesktopNavbar:React.FC<DesktopNavbarProps> = ({
     user
 }) => {
     const pathname = usePathname();
