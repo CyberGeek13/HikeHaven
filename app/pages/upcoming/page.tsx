@@ -41,6 +41,9 @@ const Upcoming = () => {
             date: date
         }
         axios.post('/api/hike', data)
+        .catch(err => {
+            console.log(err);
+        })
         
         localStorage.setItem('hikes', JSON.stringify([...selectedHikes, data]))
         setSelectedHikes([...selectedHikes, data])
