@@ -87,11 +87,12 @@ const FAQs = () => {
                 </div>
                 <div>
                     <h2 style={{ fontFamily: 'Times New Roman, Times, serif', fontSize: '40px', color: 'black', fontWeight: 'bold' }}>
-                        FAQ 2
+                    Find information for your trek
                     </h2>
                     <h3 style={{ fontFamily: 'Times New Roman, Times, serif', fontSize: '24px', color: 'black', fontStyle: 'italic' }}>
-                        This is the answer to FAQ 2
+                    One stop to find all the answers before going on your trek & start New Adventures.
                     </h3>
+                    <hr style={{ border: '3px solid #ccc' }} />
                 </div>
             </div>
             {faqs.map((faq, index) => (

@@ -183,7 +183,7 @@ const Home = () => {
             <div>
                 <h1 className="text-[60px] font-semibold ml-7 font-serif">FAQ</h1>
                 <div className="w-[98vw] px-7">
-                    <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
+                    <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5 "/>
                 </div>
                 <div className="flex flex-wrap items-center justify-center w-full gap-[30px] mb-[30px]">
                     {

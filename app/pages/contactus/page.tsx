@@ -56,7 +56,7 @@ export default function ContactForm() {
         }}
       >
         <div className="w-[50vw] flex flex-col my-4">
-          <label className="font-bold text-gray-800" htmlFor="name">
+          <label className="font-bold text-gray-200" htmlFor="name">
             Name:
           </label>
           <br />
@@ -71,7 +71,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-[50vw] flex flex-col my-4">
-          <label className="font-bold text-gray-800" htmlFor="email">
+          <label className="font-bold text-gray-200" htmlFor="email">
             Email ID:
           </label>
           <br />
@@ -86,7 +86,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-[50vw] flex flex-col my-4">
-          <label className="font-bold text-gray-800" htmlFor="name">
+          <label className="font-bold text-gray-200" htmlFor="name">
             Subject:
           </label>
           <br />
@@ -101,7 +101,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="font-bold text-gray-800" htmlFor="message">
+          <label className="font-bold text-gray-200" htmlFor="message">
             Message:
           </label>
           <br />
