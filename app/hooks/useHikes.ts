@@ -14,7 +14,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",
             image: "https://images.unsplash.com/photo-1550486686-a496af34a2d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
-            tags: "maharashtra"
+            tags: "local"
         },
         {
             id: 2,
@@ -28,7 +28,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "hard",
             image: "https://images.unsplash.com/photo-1550486686-a496af34a2d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
-            tags: "maharashtra"
+            tags: "local"
         },
         {
             id: 3,
@@ -42,7 +42,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",
             image: "https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2946&q=80",
-            tags: "maharashtra"
+            tags: "international"
         },
         {
             id: 4,
@@ -56,7 +56,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",
             image: "https://images.unsplash.com/reserve/91JuTaUSKaMh2yjB1C4A_IMG_9284.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
-            tags: "maharashtra"
+            tags: "local"
         },
         {
             id: 5,
@@ -70,7 +70,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "medium",
             image: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3132&q=80",
-            tags: "maharashtra"
+            tags: "international"
         },
         {
             id: 6,
@@ -84,7 +84,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "medium",
             image: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3132&q=80",
-            tags: "maharashtra"
+            tags: "international"
         },
         {
             id: 7,
@@ -98,7 +98,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "hard",
             image: "https://images.unsplash.com/photo-1550486686-a496af34a2d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
-            tags: "maharashtra"
+            tags: "international"
         },
         {
             id: 8,
@@ -112,7 +112,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",
             image: "https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2946&q=80",
-            tags: "maharashtra"
+            tags: "local"
         },
         {
             id: 9,
@@ -126,7 +126,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",
             image: "https://images.unsplash.com/reserve/91JuTaUSKaMh2yjB1C4A_IMG_9284.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
-            tags: "maharashtra"
+            tags: "international"
         },
         {
             id: 10,
@@ -140,7 +140,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "medium",
             image: "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3132&q=80",
-            tags: "maharashtra"
+            tags: "local"
         },
         {
             id: 11,
@@ -154,7 +154,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "hard",
             image: "https://images.unsplash.com/photo-1550486686-a496af34a2d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
-            tags: "maharashtra"
+            tags: "international"
         },
         {
             id: 12,
@@ -168,7 +168,7 @@ const useHikes = () => {
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",
             image: "https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2946&q=80",
-            tags: "maharashtra"
+            tags: "international"
         }
     ],[])
 
