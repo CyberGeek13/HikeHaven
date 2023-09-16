@@ -5,8 +5,10 @@ import axios from "axios";
 import clsx from "clsx";
 import { nanoid } from "nanoid";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useRouter, usePathname } from "next/navigation"
 
 const Upcoming = () => {
     const hikes = useHikes();

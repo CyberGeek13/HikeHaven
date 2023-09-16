@@ -11,6 +11,7 @@ import getCurrentUser from '@/app/actions/getCurrentUser';
 import CurrentUser from './CurrentUser';
 import { User } from '@prisma/client';
 import { FaCircleUser } from 'react-icons/fa6';
+import { useState } from 'react';
 
 interface DesktopNavbarProps {
     user: any
@@ -30,6 +31,8 @@ const DesktopNavbar:React.FC<DesktopNavbarProps> = ({
     const handleSignOut = () => {
         signOut();
     }
+
+    const [searchText, setSearchText] = useState("");
     
     return ( 
         <div className='w-full lg:flex lg:flex-col lg:fixed lg:z-40'>
@@ -59,8 +62,19 @@ const DesktopNavbar:React.FC<DesktopNavbarProps> = ({
                         type="text"
                         placeholder="Search..."
                         className="w-[300px] focus:w-[400px] transition px-4 py-2 pr-10 leading-tight text-gray-700 border rounded-md shadow-sm focus:border-gray-900"
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                router.push(
+                                    `/pages/upcoming/${searchText}`,
+                                );
+                            }
+                        }}
                     />
-                    <button className="absolute right-2 top-2 text-gray-600">
+                    <button className="absolute right-2 top-2 text-gray-600" onClick={() => router.push(
+                            `/pages/upcoming?search=${searchText}`,
+                        )}>
                         <FaSearch /> {/* Use the search icon */}
                     </button>
                 </div>
