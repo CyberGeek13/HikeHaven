@@ -21,7 +21,8 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
         formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
-            name: user?.name
+            name: user?.name,
+            phone: user?.phone
         }
     });
 
@@ -53,9 +54,9 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
                                 <label htmlFor="number">Number</label>
                                 <input
                                     type="text"
-                                    id="number"
+                                    id="phone"
                                     className="border-2 border-gray-300 p-2 rounded-lg"
-                                    {...register("number", { required: true })}
+                                    {...register("phone", { required: true })}
                                 />
                             </div>
                         </div>
