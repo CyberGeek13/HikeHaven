@@ -57,7 +57,7 @@ const DesktopNavbar:React.FC<DesktopNavbarProps> = ({
                 <div className="relative">
                     <input
                         type="text"
-                        placeholder="Search"
+                        placeholder="Search..."
                         className="w-[300px] focus:w-[400px] transition px-4 py-2 pr-10 leading-tight text-gray-700 border rounded-md shadow-sm focus:border-gray-900"
                     />
                     <button className="absolute right-2 top-2 text-gray-600">
