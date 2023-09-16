@@ -8,8 +8,15 @@ export async function POST(
     try {
         const currentUser = await getCurrentUser();
         const body = await request.json();
-        const { name } = body;
+        console.log(body, 'BODY_SETTINGS_POST');
+        
+        const { name, phone } = body;
 
+        const phoneRegex = /^\d{9,10}$/
+        if (!phoneRegex.test(phone)) {
+            return new NextResponse('Invalid phone number', { status: 400 });
+        }
+        
         if (!currentUser?.id) {
             return new NextResponse('Unauthorized', { status: 401 });
         }
@@ -19,7 +26,8 @@ export async function POST(
                 id: currentUser.id
             },
             data: {
-                name
+                name,
+                phone
             }
         });
 

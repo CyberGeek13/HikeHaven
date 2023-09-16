@@ -12,6 +12,8 @@ const Upcoming = () => {
     const hikes = useHikes();
 
     const [selectedHikes, setSelectedHikes] = useState<any>([]);
+    const [localHikes, setLocalHikes] = useState<any>([]);
+    const [internationalHikes, setInternationalHikes] = useState<any>([]);
 
     useEffect(() => {
         const hikes = localStorage.getItem('hikes')
@@ -19,6 +21,15 @@ const Upcoming = () => {
             setSelectedHikes(JSON.parse(hikes))
         }
     }, [])
+
+    useEffect(() => {
+        if(hikes) {
+            const local = hikes.filter((hike:any) => hike.tags === 'local')
+            const international = hikes.filter((hike:any) => hike.tags === 'international')
+            setLocalHikes(local)
+            setInternationalHikes(international)
+        }
+    }, [hikes])
 
     const handleDateClick = (hike:any, date:any) => {
         if(selectedHikes.find((h:any) => h.id === hike.id)) {
@@ -52,54 +63,119 @@ const Upcoming = () => {
 
 
     return ( 
-        <div className="mt-[200px] flex flex-wrap gap-[100px] justify-center mb-[20px]">
-            {
-                hikes.map(hike => (
-                    <div key={hike.id} className="flex justify-center">
-                        <div className="flex flex-col items-center justify-center w-[300px] pb-[100px] bg-white rounded-[10px] shadow-lg">
-                            <div className="w-[300px] h-[200px] rounded-t-[10px]">
-                                <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive"/>
-                            </div>
-                            <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
-                                <div className="text-[25px] mt-[65px] font-semibold">{hike.name}</div>
-                                <div className="text-[15px] font-semibold">{hike.location}</div>
-                                <div className="text-[15px] font-semibold">Rs {hike.price}</div>
-                                <div className={clsx(
-                                    'text-[13px] ml-[7px]',
-                                    hike.difficulty === 'easy' ? 'text-green-500' : '',
-                                    hike.difficulty === 'medium' ? 'text-yellow-500' : '',
-                                    hike.difficulty === 'hard' ? 'text-red-500' : ''
-                                )}>
-                                    {hike.difficulty}
-                                </div>
-                                <div className="flex flex-col gap-2 mt-[7px]">
-                                {
-                                    hike.availDates.map(data => (
-                                        <div 
-                                            className={clsx(
-                                                "bg-gray-200 text-black p-[3px] w-[250px] text-md font-serif cursor-pointer shadow-md hover:shadow-lg transition-all duration-100 hover:bg-gray-300 px-[10px]",
-                                                selectedHikes.find((h:any) => h.id === hike.id && h.date === data) ? 'bg-green-500 text-white hover:bg-green-600' : ''
-                                            )}
-                                            onClick={() => handleDateClick(hike, data)}
-                                            key={nanoid()}
-                                        >
-                                            {data}
+        <div className="mt-[200px] flex flex-col gap-[100px]">
+            <div>
+                <h1 className="text-[60px] font-semibold ml-7 font-serif">Local Treks</h1>
+                <div className="w-[98vw] px-7">
+                    <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
+                </div>
+                <div className="flex flex-wrap gap-[100px] justify-center">
+                    {
+                        localHikes.map((hike: any) => (
+                            <div key={hike.id} className="flex justify-center">
+                                <div className="flex flex-col items-center justify-center w-[300px] pb-[100px] bg-white rounded-[10px] shadow-lg">
+                                    <div className="w-[300px] h-[200px] rounded-t-[10px]">
+                                        <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive"/>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
+                                        <div className="text-[25px] mt-[65px] font-semibold">{hike.name}</div>
+                                        <div className="text-[15px] font-semibold">{hike.location}</div>
+                                        <div className="text-[15px] font-semibold">Rs {hike.price}</div>
+                                        <div className={clsx(
+                                            'text-[13px] ml-[7px]',
+                                            hike.difficulty === 'easy' ? 'text-green-500' : '',
+                                            hike.difficulty === 'medium' ? 'text-yellow-500' : '',
+                                            hike.difficulty === 'hard' ? 'text-red-500' : ''
+                                        )}>
+                                            {hike.difficulty}
                                         </div>
-                                    ))
-                                }
+                                        <div className="flex flex-col gap-2 mt-[7px]">
+                                        {
+                                            hike.availDates.map((data: any) => (
+                                                <div 
+                                                    className={clsx(
+                                                        "bg-gray-200 text-black p-[3px] w-[250px] text-md font-serif cursor-pointer shadow-md hover:shadow-lg transition-all duration-100 hover:bg-gray-300 px-[10px]",
+                                                        selectedHikes.find((h:any) => h.id === hike.id && h.date === data) ? 'bg-green-500 text-white hover:bg-green-600' : ''
+                                                    )}
+                                                    onClick={() => handleDateClick(hike, data)}
+                                                    key={nanoid()}
+                                                >
+                                                    {data}
+                                                </div>
+                                            ))
+                                        }
+                                        </div>
+                                        {
+                                            selectedHikes.find((h:any) => h.id === hike.id) ? (
+                                                <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[20px]">Selected</div>
+                                            ) : (
+                                                <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select</div>
+                                            )
+                                        }
+                                    </div>
                                 </div>
-                                {
-                                    selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                        <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[20px]">Selected</div>
-                                    ) : (
-                                        <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select</div>
-                                    )
-                                }
                             </div>
-                        </div>
-                    </div>
-                ))
-            }
+                        ))
+                    }
+                </div>
+            </div>
+            
+
+            <div>
+                <h1 className="text-[60px] font-semibold ml-7 font-serif">International Treks</h1>
+                <div className="w-[98vw] px-7">
+                    <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
+                </div>
+                <div className="flex flex-wrap gap-[100px] justify-center">                
+                    {
+                        internationalHikes.map((hike: any) => (
+                            <div key={hike.id} className="flex justify-center">
+                                <div className="flex flex-col items-center justify-center w-[300px] pb-[100px] bg-white rounded-[10px] shadow-lg">
+                                    <div className="w-[300px] h-[200px] rounded-t-[10px]">
+                                        <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive"/>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
+                                        <div className="text-[25px] mt-[65px] font-semibold">{hike.name}</div>
+                                        <div className="text-[15px] font-semibold">{hike.location}</div>
+                                        <div className="text-[15px] font-semibold">Rs {hike.price}</div>
+                                        <div className={clsx(
+                                            'text-[13px] ml-[7px]',
+                                            hike.difficulty === 'easy' ? 'text-green-500' : '',
+                                            hike.difficulty === 'medium' ? 'text-yellow-500' : '',
+                                            hike.difficulty === 'hard' ? 'text-red-500' : ''
+                                        )}>
+                                            {hike.difficulty}
+                                        </div>
+                                        <div className="flex flex-col gap-2 mt-[7px]">
+                                        {
+                                            hike.availDates.map((data: any) => (
+                                                <div 
+                                                    className={clsx(
+                                                        "bg-gray-200 text-black p-[3px] w-[250px] text-md font-serif cursor-pointer shadow-md hover:shadow-lg transition-all duration-100 hover:bg-gray-300 px-[10px]",
+                                                        selectedHikes.find((h:any) => h.id === hike.id && h.date === data) ? 'bg-green-500 text-white hover:bg-green-600' : ''
+                                                    )}
+                                                    onClick={() => handleDateClick(hike, data)}
+                                                    key={nanoid()}
+                                                >
+                                                    {data}
+                                                </div>
+                                            ))
+                                        }
+                                        </div>
+                                        {
+                                            selectedHikes.find((h:any) => h.id === hike.id) ? (
+                                                <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[20px]">Selected</div>
+                                            ) : (
+                                                <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select</div>
+                                            )
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
      );
 }

@@ -6,6 +6,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { BiSolidDownArrow } from "react-icons/bi";
+import { User } from "@prisma/client";
 
 interface DesktopItemProps{
     label:string;
@@ -13,12 +14,14 @@ interface DesktopItemProps{
     active:boolean;
     logo?:IconType;
     options?: any[];
+    user?:User;
 }
 
 const DesktopItem:React.FC<DesktopItemProps> = ({
-    label,href,active,logo:Logo,options
+    label,href,active,logo:Logo,options,user
 }) => {
     const [showOptions,setShowOptions] = useState(false)
+    const [wishlistItems, setWishlistItems] = useState(user?.hikeIds?.length || 0)
     return ( 
         <div>
             {
@@ -67,7 +70,16 @@ const DesktopItem:React.FC<DesktopItemProps> = ({
                         {
                             Logo ? <Logo /> : null
                         }
-                        {label}
+                        <div className="flex items-center">
+                            {label}
+                            {
+                                label === "Wishlist" && (
+                                    <div>
+                                        ({wishlistItems})
+                                    </div>
+                                )
+                            }
+                        </div>
                     </Link>
             }
         </div>
