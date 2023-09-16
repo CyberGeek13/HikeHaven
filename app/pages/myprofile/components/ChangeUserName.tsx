@@ -49,8 +49,17 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
                                     {...register("name", { required: true })}
                                 />
                             </div>
+                            <div className="flex justify-center items-center gap-[20px] mt-[20px]">
+                                <label htmlFor="number">Number</label>
+                                <input
+                                    type="text"
+                                    id="number"
+                                    className="border-2 border-gray-300 p-2 rounded-lg"
+                                    {...register("number", { required: true })}
+                                />
+                            </div>
                         </div>
-                        <div className="flex gap-[20px]">
+                        <div className="flex gap-[20px] mb-[20px] justify-center">
                             <button className="bg-blue-500 text-white p-2 rounded-lg mt-5">Save</button>
                             <button className="bg-blue-500 text-white p-2 rounded-lg mt-5" onClick={() => setEdit(false)}>Cancel</button>
                         </div>
