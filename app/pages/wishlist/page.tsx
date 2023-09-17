@@ -97,7 +97,7 @@ const Wishlist = () => {
                                 <div key={hike.id} className="flex justify-center">
                                     <div className="flex flex-col items-center justify-center w-[300px] pb-[100px] bg-white rounded-[10px] shadow-lg">
                                         <div className="relative w-[300px] h-[200px] rounded-t-[10px]">
-                                            <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive"/>
+                                            <Image alt="hike" src={hike.image} height={0} width={0} fill/>
                                             {/* add a delete button */}
                                             <div className="absolute top-0 right-0 bg-red-500 text-white text-[15px] font-semibold rounded-bl-[10px] px-[5px] py-[2px] cursor-pointer hover:bg-red-600 transition-all duration-100" onClick={() => removeHike(hike.id)}>
                                                 Remove
