@@ -130,10 +130,10 @@ const Home = () => {
                     <Slider {...settings} className="w-[90vw]">
                         {
                             hikes.map(hike => (
-                                <div key={hike.id} className="flex justify-center">
+                                <div key={hike.id} className="flex justify-center mb-[30px]">
                                     <div className="flex flex-col items-center justify-center w-[300px] py-[30px] bg-white rounded-[10px] shadow-lg">
                                         <div className="w-[300px] h-[200px] rounded-t-[10px]">
-                                            <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive"/>
+                                            <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
                                             <div className={clsx(
                                                 'text-[13px] ml-[7px]',
                                                 hike.difficulty === 'easy' ? 'text-green-500' : '',
@@ -143,7 +143,7 @@ const Home = () => {
                                                 {hike.difficulty}
                                             </div>
                                         </div>
-                                        <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
+                                        <div className="flex flex-col items-center justify-center w-[300px]">
                                             <div className="text-[25px] mt-[45px] font-semibold">{hike.name}</div>
                                             <div className="text-[15px] font-semibold">{hike.location}</div>
                                             <div className="text-[15px] font-semibold">Rs {hike.price}</div>
@@ -165,9 +165,9 @@ const Home = () => {
                                             </div>
                                             {
                                                 selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                                    <div className="text-[15px] font-semibold text-green-500 mt-[10px]">Selected</div>
+                                                    <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[10px]">Selected</div>
                                                 ) : (
-                                                    <div className="text-[15px] font-semibold text-gray-500 mt-[10px]">Click on date to select</div>
+                                                    <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[10px]">Click on date to select</div>
                                                 )
                                             }
                                         </div>
