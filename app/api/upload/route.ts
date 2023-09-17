@@ -48,15 +48,25 @@ export async function GET(
         const currentUser = await getCurrentUser();
         if (!currentUser) return new NextResponse('Unauthorized', { status: 401 });
 
-        // get all images by all users
+        // get all images by all users also add the user id
 
         const users = await prisma.user.findMany({
             select: {
-                images: true
+                id: true,
+                images: true,
+                name: true
             }
         });
 
-        const images = users.map(user => user.images).flat();
+        const images = users.map(user => {
+            return user.images.map(image => {
+                return {
+                    id: user.id,
+                    url: image,
+                    name: user.name
+                }
+            })
+        }).flat();
 
         return new NextResponse(JSON.stringify(images), {
             headers: {
