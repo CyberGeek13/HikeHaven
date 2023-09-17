@@ -77,6 +77,7 @@ const Footer = () => {
                         Contact Us
                     </h3>
                     <p className="text-white text-sm">Purav Ajmera - 8355849582</p>
+                    <a href="mailto:hikehaven13@gmail.com" className="text-white text-sm hover:text-gray-400 cursor-pointer hover:underline">hikehaven13@gmail.com</a>
                     <p className="text-white text-sm">Mon to Sat - 9.30 AM to 7.30 PM</p>
                     <p className="text-white text-sm">Sun - 9.30 AM to 6.30 PM</p>
                     <Image alt='logo' src='/images/FooterLogo.png' height={280} width={280} className="mt-[5px] -ml-[14px]"/>

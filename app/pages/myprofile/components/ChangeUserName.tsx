@@ -33,6 +33,7 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
             router.refresh();
         })
         .catch(() => toast.error('Something went wrong!'))
+        .finally(() => setEdit(false));
     }
 
     return ( 

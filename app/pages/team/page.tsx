@@ -14,6 +14,10 @@ const Team = () => {
                         image={member.image}
                         quote={member.quote}
                         description={member.description}
+                        linkedin={member.linkedin}
+                        instagram={member.instagram}
+                        facebook={member.facebook}
+                        email={member.email}
                     />
                 ))
             }

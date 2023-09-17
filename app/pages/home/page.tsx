@@ -16,6 +16,7 @@ import { toast } from "react-hot-toast";
 import { nanoid } from 'nanoid'
 import WhyChooseUs from "./components/WhyChooseUs";
 import BottomForum from "./components/BottomForum";
+import axios from "axios";
 
     const CustomPrevArrow = (props:any) => (
         <div
@@ -44,10 +45,15 @@ const Home = () => {
     const [selectedHikes, setSelectedHikes] = useState<any>([]);
 
     useEffect(() => {
-        const hikes = localStorage.getItem('hikes')
-        if (hikes) {
-            setSelectedHikes(JSON.parse(hikes))
-        }
+        axios.get('/api/hike')
+        .then(res => {
+            console.log(res);
+            
+            setSelectedHikes(hikes.filter((hike:any) => res.data.hikeIds.includes(hike.id)))
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }, [])
 
     useEffect(() => {
@@ -88,6 +94,7 @@ const Home = () => {
             if(foundDate.date === date) {
                 toast.error('Hike removed successfully')
                 setSelectedHikes(data)
+                axios.post('/api/delete', {id: hike.id})
                 return;
             }
             data = [...data, {id: hike.id, date: date}]
@@ -101,6 +108,12 @@ const Home = () => {
             id: hike.id,
             date: date
         }
+
+        axios.post('/api/hike', data)
+        .catch(err => {
+            console.log(err);
+        })
+
         localStorage.setItem('hikes', JSON.stringify([...selectedHikes, data]))
         setSelectedHikes([...selectedHikes, data])
         toast.success('Hike added successfully')
@@ -130,10 +143,10 @@ const Home = () => {
                     <Slider {...settings} className="w-[90vw]">
                         {
                             hikes.map(hike => (
-                                <div key={hike.id} className="flex justify-center">
+                                <div key={hike.id} className="flex justify-center mb-[30px]">
                                     <div className="flex flex-col items-center justify-center w-[300px] py-[30px] bg-white rounded-[10px] shadow-lg">
                                         <div className="w-[300px] h-[200px] rounded-t-[10px]">
-                                            <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive"/>
+                                            <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
                                             <div className={clsx(
                                                 'text-[13px] ml-[7px]',
                                                 hike.difficulty === 'easy' ? 'text-green-500' : '',
@@ -143,7 +156,7 @@ const Home = () => {
                                                 {hike.difficulty}
                                             </div>
                                         </div>
-                                        <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
+                                        <div className="flex flex-col items-center justify-center w-[300px]">
                                             <div className="text-[25px] mt-[45px] font-semibold">{hike.name}</div>
                                             <div className="text-[15px] font-semibold">{hike.location}</div>
                                             <div className="text-[15px] font-semibold">Rs {hike.price}</div>
@@ -165,9 +178,9 @@ const Home = () => {
                                             </div>
                                             {
                                                 selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                                    <div className="text-[15px] font-semibold text-green-500 mt-[10px]">Selected</div>
+                                                    <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[10px]">Selected</div>
                                                 ) : (
-                                                    <div className="text-[15px] font-semibold text-gray-500 mt-[10px]">Click on date to select</div>
+                                                    <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[10px]">Click on date to select</div>
                                                 )
                                             }
                                         </div>

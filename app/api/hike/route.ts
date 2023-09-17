@@ -16,6 +16,10 @@ export async function POST(
             return new NextResponse('Unauthorized', { status: 401 });
         }
 
+        if (currentUser.hikeIds.includes(id)) {
+            return new NextResponse('Already added', { status: 400 });
+        }
+
         const updatedUser = await prisma.user.update({
             where: {
                 id: currentUser.id
