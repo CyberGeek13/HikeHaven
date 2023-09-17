@@ -36,7 +36,7 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
         .finally(() => setEdit(false));    }
 
     return ( 
-        <div>
+        <div className="mt-[20px]">
             {
                 edit ? (
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -69,7 +69,6 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
                     <button className="bg-blue-500 text-white p-2 rounded-lg" onClick={() => setEdit(true)}>Edit</button>
                 )
             }
-            
         </div>
      );
 }

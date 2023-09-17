@@ -51,7 +51,7 @@ const DesktopNavbar:React.FC<DesktopNavbarProps> = ({
                     ))
                 }
                 {
-                    user.email ? (
+                    user?.email ? (
                         <CurrentUser user={user}/>
                     ) : (
                         <DesktopItem label="My Profile" href='/pages/myprofile' active={pathname === "/pages/myprofile"} logo={FaCircleUser} user={user}/>

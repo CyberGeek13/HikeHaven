@@ -70,7 +70,7 @@ const Wishlist = () => {
     }
 
     return ( 
-        <div className="mt-[150px]">
+        <div className="mt-[180px] mb-10">
             <div className="flex justify-between items-center pr-[50px]">
                 <h1 className="text-[60px] font-semibold ml-7 font-serif">Your Wishlist</h1>
                 {

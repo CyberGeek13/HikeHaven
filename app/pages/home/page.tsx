@@ -91,7 +91,7 @@ const Home = () => {
             const foundDate = selectedHikes.find((h:any) => h.id === hike.id && h.date === date)
             let data = selectedHikes.filter((h:any) => !(h.id === hike.id))
             localStorage.setItem('hikes', JSON.stringify(data))
-            if(foundDate.date === date) {
+            if(foundDate?.date === date) {
                 toast.error('Hike removed successfully')
                 setSelectedHikes(data)
                 axios.post('/api/delete', {id: hike.id})
