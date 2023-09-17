@@ -16,6 +16,7 @@ import { toast } from "react-hot-toast";
 import { nanoid } from 'nanoid'
 import WhyChooseUs from "./components/WhyChooseUs";
 import BottomForum from "./components/BottomForum";
+import axios from "axios";
 
     const CustomPrevArrow = (props:any) => (
         <div
@@ -88,6 +89,7 @@ const Home = () => {
             if(foundDate.date === date) {
                 toast.error('Hike removed successfully')
                 setSelectedHikes(data)
+                axios.post('/api/delete', {id: hike.id})
                 return;
             }
             data = [...data, {id: hike.id, date: date}]
@@ -101,6 +103,12 @@ const Home = () => {
             id: hike.id,
             date: date
         }
+
+        axios.post('/api/hike', data)
+        .catch(err => {
+            console.log(err);
+        })
+
         localStorage.setItem('hikes', JSON.stringify([...selectedHikes, data]))
         setSelectedHikes([...selectedHikes, data])
         toast.success('Hike added successfully')
