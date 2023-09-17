@@ -18,10 +18,6 @@ const Upcoming = () => {
     const [internationalHikes, setInternationalHikes] = useState<any>([]);
 
     useEffect(() => {
-        // const hikes = localStorage.getItem('hikes')
-        // if (hikes) {
-        //     setSelectedHikes(JSON.parse(hikes))
-        // }
         axios.get('/api/hike')
         .then(res => {
             console.log(res);

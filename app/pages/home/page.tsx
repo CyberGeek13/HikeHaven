@@ -45,10 +45,15 @@ const Home = () => {
     const [selectedHikes, setSelectedHikes] = useState<any>([]);
 
     useEffect(() => {
-        const hikes = localStorage.getItem('hikes')
-        if (hikes) {
-            setSelectedHikes(JSON.parse(hikes))
-        }
+        axios.get('/api/hike')
+        .then(res => {
+            console.log(res);
+            
+            setSelectedHikes(hikes.filter((hike:any) => res.data.hikeIds.includes(hike.id)))
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }, [])
 
     useEffect(() => {
