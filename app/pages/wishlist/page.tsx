@@ -105,7 +105,7 @@ const Wishlist = () => {
                                         <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
                                             <div className="text-[25px] mt-[65px] font-semibold">{hike.name}</div>
                                             <div className="text-[15px] font-semibold">{hike.location}</div>
-                                            <div className="text-[15px] font-semibold">Rs {hike.price}</div>
+                                            <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
                                             <div className="text-[15px] font-semibold text-green-500 mt-[10px]">{hike.selectedDate}</div>
                                         </div>
                                     </div>

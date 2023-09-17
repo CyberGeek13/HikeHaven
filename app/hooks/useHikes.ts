@@ -9,7 +9,7 @@ const useHikes = () => {
             location: "Western Ghats, Maharashtra",
             distance: 10,
             elevation: 1000,
-            price: "1,199/-",
+            price: 1199,
             date: "2021-01-01",
             availDates: ["2021-01-01", "2021-01-02", "2021-01-03"],
             difficulty: "easy",

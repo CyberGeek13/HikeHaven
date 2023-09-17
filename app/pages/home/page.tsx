@@ -159,7 +159,7 @@ const Home = () => {
                                         <div className="flex flex-col items-center justify-center w-[300px]">
                                             <div className="text-[25px] mt-[45px] font-semibold">{hike.name}</div>
                                             <div className="text-[15px] font-semibold">{hike.location}</div>
-                                            <div className="text-[15px] font-semibold">Rs {hike.price}</div>
+                                            <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
                                             <div className="flex flex-col gap-2 mt-[7px]">
                                             {
                                                 hike.availDates.map(data => (
