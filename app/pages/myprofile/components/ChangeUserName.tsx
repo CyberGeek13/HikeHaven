@@ -32,8 +32,8 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
         .then(() => {
             router.refresh();
         })
-        .catch(() => toast.error('Number Should be of 10 Digits!'))
-        .finally(() => setEdit(false));    }
+        .catch(() => toast.error('Something went wrong!'))
+    }
 
     return ( 
         <div className="mt-[20px]">
