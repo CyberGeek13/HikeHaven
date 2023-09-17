@@ -18,7 +18,7 @@ const useHikes = () => {
         },
         {
             id: 2,
-            name: "Hike 2",
+            name: "Prabalmachi",
             description: "Hike 3 description",
             location: "Maharashtra",
             distance: 30,
@@ -32,7 +32,7 @@ const useHikes = () => {
         },
         {
             id: 3,
-            name: "Hike 3",
+            name: "Kalsubai",
             description: "Hike 4 description",
             location: "Maharashtra",
             distance: 40,
@@ -46,7 +46,7 @@ const useHikes = () => {
         },
         {
             id: 4,
-            name: "Hike 4",
+            name: "Songiri Fort",
             description: "Hike 1 description",
             location: "Maharashtra",
             distance: 10,
@@ -60,7 +60,7 @@ const useHikes = () => {
         },
         {
             id: 5,
-            name: "Hike 5",
+            name: "Andharban Jungle",
             description: "Hike 2 description",
             location: "Maharashtra",
             distance: 20,

@@ -32,9 +32,8 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
         .then(() => {
             router.refresh();
         })
-        .catch(() => toast.error('Something went wrong!'))
-        .finally(() => setEdit(false));
-    }
+        .catch(() => toast.error('Number Should be of 10 Digits!'))
+        .finally(() => setEdit(false));    }
 
     return ( 
         <div>
@@ -67,7 +66,7 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
                         </div>
                     </form>
                 ) : (
-                    <button className="bg-blue-500 text-white p-2 rounded-lg mt-5" onClick={() => setEdit(true)}>Edit</button>
+                    <button className="bg-blue-500 text-white p-2 rounded-lg" onClick={() => setEdit(true)}>Edit</button>
                 )
             }
             
