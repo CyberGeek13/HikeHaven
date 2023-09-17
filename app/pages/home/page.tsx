@@ -124,7 +124,7 @@ const Home = () => {
         <main>
             <TopScroller clickHandler={scrollUp}/>
             <div className="relative" ref={topSection}>
-                <Image alt="hero" src="/images/home_mountain.jpg" height={0} width={0} fill/>
+                <Image alt="hero" src="/images/home_mountain.jpg" height={0} width={0} layout="responsive"/>
                 <div className="absolute top-[350px] left-[30px] font-bold text-6xl text-white text-center">India’s Largest & Safest Trekking Organisation</div>
                 <div className="absolute top-[550px] left-[120px] font-bold text-2xl text-white text-center">5,000+ Trust Our Transformative Trek Experience and Pioneering Safety Standards Each Year</div>
                 <div className="absolute top-[630px] left-[600px]">
@@ -146,7 +146,7 @@ const Home = () => {
                                 <div key={hike.id} className="flex justify-center mb-[30px]">
                                     <div className="flex flex-col items-center justify-center w-[300px] py-[30px] bg-white rounded-[10px] shadow-lg">
                                         <div className="w-[300px] h-[200px] rounded-t-[10px]">
-                                            <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} fill/>
+                                            <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
                                             <div className={clsx(
                                                 'text-[13px] ml-[7px]',
                                                 hike.difficulty === 'easy' ? 'text-green-500' : '',

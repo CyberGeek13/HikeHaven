@@ -57,7 +57,7 @@ const Search = () => {
                             <div key={hike.id} className="flex justify-center">
                                 <div className="flex flex-col items-center justify-center w-[300px] pb-[100px] bg-white rounded-[10px] shadow-lg">
                                     <div className="w-[300px] h-[200px] rounded-t-[10px]">
-                                        <Image alt="hike" src={hike.image} height={0} width={0} fill/>
+                                        <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive"/>
                                     </div>
                                     <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
                                         <div className="text-[25px] mt-[65px] font-semibold">{hike.name}</div>

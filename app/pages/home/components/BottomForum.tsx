@@ -5,7 +5,7 @@ import Image from "next/image";
 const BottomForum = () => {
     return ( 
         <div className="relative font-serif">
-            <Image alt="forum" src="/images/forum.jpeg" height={0} width={0} fill/>
+            <Image alt="forum" src="/images/forum.jpeg" height={0} width={0} layout="responsive"/>
             <div className="absolute top-[140px] right-[30px] max-w-[800px] font-bold text-6xl text-white text-center">
                 Join the HikeHaven Community Forum
             </div>
