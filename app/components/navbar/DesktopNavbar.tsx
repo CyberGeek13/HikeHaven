@@ -7,9 +7,7 @@ import { signOut } from "next-auth/react";
 import {usePathname, useRouter} from 'next/navigation';
 import useWhiteRoutes from '@/app/hooks/useWhiteRoutes';
 import { FaSearch } from 'react-icons/fa';
-import getCurrentUser from '@/app/actions/getCurrentUser';
 import CurrentUser from './CurrentUser';
-import { User } from '@prisma/client';
 import { FaCircleUser } from 'react-icons/fa6';
 import { useState } from 'react';
 

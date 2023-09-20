@@ -28,18 +28,21 @@ const Member: React.FC<MemberProps> = ({
     email
 }) => {
     return ( 
-        <div className="w-[300px] p-[30px] rounded-md bg-gray-100 shadow-lg hover:shadow-2xl transition duration-200 flex flex-col justify-center items-center gap-[20px]">
+        <div className="w-[800px] p-[30px] rounded-md bg-gray-100 shadow-lg hover:shadow-2xl transition duration-200 flex flex-col justify-center items-center gap-[20px]">
             <div>
                 <Image alt="user" src={image} height={150} width={150} className="rounded-xl"/>
             </div>
             <div className="flex flex-col gap-[5px]">
-                <span className="text-lg font-bold">{name}</span>
-                <span className="text-sm">{position}</span>
+                <span className="text-xl font-bold font-serif">{name}</span>
+                <span className="text-md font-serif ml-5 font-bold text-green-600 hover:underline">{position}</span>
             </div>
-            <div>
-                {quote}
+            <div className="font-serif text-lg text-center">
+                "{quote}"
             </div>
-            <div className="flex flex-wrap gap-[10px] justify-center items-center">
+            <div className="font-serif text-lg text-center">
+                "{description}"
+            </div>
+            <div className="flex flex-wrap gap-[10px] justify-center items-center mt-3">
                 {
                     linkedin && (
                         <AiFillLinkedin 

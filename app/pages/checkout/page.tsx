@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { TbTrekking } from 'react-icons/tb';
 import { BiSolidFirstAid } from 'react-icons/bi';
 import { FaHeadphones } from 'react-icons/fa';
+import Head from 'next/head';
 
 const Checkbox = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -75,9 +76,6 @@ const Checkout = () => {
               <span className='text-[35px] font-serif font-semibold'>
                   Cart of Adventures<hr></hr>
               </span>
-              {/* <div className="w-[98vw] px-7">
-                <div className="h-1 w-[0px] bg-[#ffd11a] rounded-sm mb-5"/>
-              </div> */}
               {
                   bookedHikes.map((hike:any) => (
                       <div className='flex justify-between gap-[20px] p-[10px] bg-white shadow-xl'>

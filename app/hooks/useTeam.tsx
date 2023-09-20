@@ -7,24 +7,16 @@ const useTeam = () => {
     const team = useMemo(() => [
         {
             name: "Purav Ajmera",
-            position: "CEO",
+            position: "Trek Leader",
             image: "/images/team/purav.jpg",
-            quote: "Do your job wisely and don't forget to smile.",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam id rhoncus luctus, nisl libero ultrices urna, eget lacinia nisl velit eget mauris. Sed euismod, diam id rhoncus luctus, nisl libero ultrices urna, eget lacinia nisl velit eget mauris.",
+            quote: "It's not the mountain we conquer, but ourselves.",
+            description: "A Trek Leader is the compass of adventure, guiding and inspiring groups through the wilderness. They prioritize safety, bring nature to life with knowledge, and foster camaraderie. These passionate leaders handle logistics, adapt to challenges, and champion environmental responsibility, making every trek an unforgettable experience.",
             linkedin: "https://www.linkedin.com/in/purav-ajmera-2602a51aa",
             instagram: "https://instagram.com/purav.13?igshid=OGQ5ZDc2ODk2ZA==",
             facebook: "https://www.facebook.com/purav.ajmera?mibextid=b06tZ0",
             email: "mailto:puravajmera2@gmail.com"
         },
-        {
-            name: "Sahil Yadav",
-            position: "Manager",
-            image: "/images/team/yadavji.jpg",
-            quote: "Monkey D. Luffy is the future Pirate King.",
-            description: "Jhingalala Hoo Hoo",
-            linkedin: "https://www.linkedin.com/in/sahil-yadav106/",
-            email: "mailto:sahiljyadav12345@gmail.com"
-        }
+        
     ], [])
 
     return team;
