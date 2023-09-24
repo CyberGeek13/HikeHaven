@@ -40,21 +40,41 @@ const Home = () => {
     const router = useRouter();
     const topSection = useRef<HTMLDivElement>(null);
     const faq = useFAQ();
-    const hikes = useHikes();
+    const [hikes, setHikes] = useState<any>([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const [selectedHikes, setSelectedHikes] = useState<any>([]);
 
     useEffect(() => {
+        axios.get('/api/hikes')
+        .then(res => {
+            console.log(res.data);
+            setHikes(res.data)
+        })
+        .finally(() => {
+            setIsLoading(false)
+        })
+      }, [])
+
+    useEffect(() => {
+        console.log(hikes);
         axios.get('/api/hike')
         .then(res => {
             console.log(res);
-            
+            hikes.forEach((hike:any) => {
+                if(res.data.hikeIds.includes(hike.id)) {
+                    hike.selectedDate = res.data.hikeDates[res.data.hikeIds.indexOf(hike.id)]
+                    // tempHikes.push(hike)
+                    console.log(hike);
+                    // price += hike.price
+                }
+            })
             setSelectedHikes(hikes.filter((hike:any) => res.data.hikeIds.includes(hike.id)))
         })
         .catch(err => {
             console.log(err);
         })
-    }, [])
+    }, [hikes])
 
     useEffect(() => {
         console.log(selectedHikes);
@@ -140,55 +160,61 @@ const Home = () => {
                     <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
                 </div>
                 <div className="flex justify-center">
-                    <Slider {...settings} className="w-[90vw]">
-                        {
-                            hikes.map(hike => (
-                                <div key={hike.id} className="flex justify-center mb-[30px]">
-                                    <div className="flex flex-col items-center justify-center w-[300px] py-[30px] bg-white rounded-[10px] shadow-lg">
-                                        <div className="w-[300px] h-[200px] rounded-t-[10px]">
-                                            <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
-                                            <div className={clsx(
-                                                'text-[13px] ml-[7px]',
-                                                hike.difficulty === 'easy' ? 'text-green-500' : '',
-                                                hike.difficulty === 'medium' ? 'text-yellow-500' : '',
-                                                hike.difficulty === 'hard' ? 'text-red-500' : ''
-                                            )}>
-                                                {hike.difficulty}
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col items-center justify-center w-[300px]">
-                                            <div className="text-[25px] mt-[45px] font-semibold">{hike.name}</div>
-                                            <div className="text-[15px] font-semibold">{hike.location}</div>
-                                            <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
-                                            <div className="flex flex-col gap-2 mt-[7px]">
-                                            {
-                                                hike.availDates.map(data => (
-                                                    <div 
-                                                        className={clsx(
-                                                            "bg-gray-200 text-black p-[3px] w-[250px] text-md font-serif cursor-pointer shadow-md hover:shadow-lg transition-all duration-100 hover:bg-gray-300 px-[10px]",
-                                                            selectedHikes.find((h:any) => h.id === hike.id && h.date === data) ? 'bg-green-500 text-white hover:bg-green-600' : ''
-                                                        )}
-                                                        onClick={() => handleDateClick(hike, data)}
-                                                        key={nanoid()}
-                                                    >
-                                                        {data}
+                    {
+                        isLoading ? (
+                            "Loading..."
+                        ) : (
+                            <Slider {...settings} className="w-[90vw]">
+                                {
+                                    hikes.map((hike:any) => (
+                                        <div key={hike.id} className="flex justify-center mb-[30px]">
+                                            <div className="flex flex-col items-center justify-center w-[300px] py-[30px] bg-white rounded-[10px] shadow-lg">
+                                                <div className="w-[300px] h-[200px] rounded-t-[10px]">
+                                                    <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
+                                                    <div className={clsx(
+                                                        'text-[13px] ml-[7px]',
+                                                        hike.difficulty === 'easy' ? 'text-green-500' : '',
+                                                        hike.difficulty === 'medium' ? 'text-yellow-500' : '',
+                                                        hike.difficulty === 'hard' ? 'text-red-500' : ''
+                                                    )}>
+                                                        {hike.difficulty}
                                                     </div>
-                                                ))
-                                            }
+                                                </div>
+                                                <div className="flex flex-col items-center justify-center w-[300px]">
+                                                    <div className="text-[25px] mt-[45px] font-semibold">{hike.name}</div>
+                                                    <div className="text-[15px] font-semibold">{hike.location}</div>
+                                                    <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
+                                                    <div className="flex flex-col gap-2 mt-[7px]">
+                                                    {
+                                                        hike.availDates.map((data:any) => (
+                                                            <div 
+                                                                className={clsx(
+                                                                    "bg-gray-200 text-black p-[3px] w-[250px] text-md font-serif cursor-pointer shadow-md hover:shadow-lg transition-all duration-100 hover:bg-gray-300 px-[10px]",
+                                                                    selectedHikes.find((h:any) => h.id === hike.id && h.date === data) ? 'bg-green-500 text-white hover:bg-green-600' : ''
+                                                                )}
+                                                                onClick={() => handleDateClick(hike, data)}
+                                                                key={nanoid()}
+                                                            >
+                                                                {data}
+                                                            </div>
+                                                        ))
+                                                    }
+                                                    </div>
+                                                    {
+                                                        selectedHikes.find((h:any) => h.id === hike.id) ? (
+                                                            <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[10px]">Selected</div>
+                                                        ) : (
+                                                            <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[10px]">Click on date to select</div>
+                                                        )
+                                                    }
+                                                </div>
                                             </div>
-                                            {
-                                                selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                                    <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[10px]">Selected</div>
-                                                ) : (
-                                                    <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[10px]">Click on date to select</div>
-                                                )
-                                            }
                                         </div>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </Slider>
+                                    ))
+                                }
+                            </Slider>
+                        )
+                    }
                 </div>
             </div>
             <News />

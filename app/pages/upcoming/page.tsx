@@ -5,29 +5,54 @@ import axios from "axios";
 import clsx from "clsx";
 import { nanoid } from "nanoid";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter, usePathname } from "next/navigation"
 
 const Upcoming = () => {
-    const hikes = useHikes();
+    // const hikes = useHikes();
     const router = useRouter();
 
     const [selectedHikes, setSelectedHikes] = useState<any>([]);
     const [localHikes, setLocalHikes] = useState<any>([]);
     const [internationalHikes, setInternationalHikes] = useState<any>([]);
+    const [hikes, setHikes] = useState<any>([]);
 
     useEffect(() => {
         axios.get('/api/hike')
         .then(res => {
-            console.log(res);
-            
-            setSelectedHikes(hikes.filter((hike:any) => res.data.hikeIds.includes(hike.id)))
+            console.log('/api/hike res', res.data);
+            if(!hikes) return;
+            setSelectedHikes(hikes.filter((hike:any) => {
+                if(res.data.hikeIds.includes(hike.id)) {
+                    hike.date = res.data.hikeDates[res.data.hikeIds.indexOf(hike.id)]
+                    return true;
+                }
+                return false;
+            }))
+            //console.log('/api/hike called');
         })
         .catch(err => {
             console.log(err);
         })
+    }, [hikes])
+
+    useEffect(() => {
+        axios.get('/api/hikes')
+        .then(res => {
+            console.log(res.data);
+            setHikes(res.data)
+            //console.log('/api/hikes called');
+        })
     }, [])
+
+    useEffect(() => {
+        console.log('selectedHikes', selectedHikes);
+    }, [selectedHikes])
+
+    useEffect(() => {
+        console.log('hikes', hikes);
+    }, [hikes])
 
     useEffect(() => {
         if(hikes) {

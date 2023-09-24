@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import SettingsModal from "./SettingsModal";
+import Image from "next/image";
+import { CldUploadButton } from "next-cloudinary";
+import Button from "@/app/components/Button";
 
 interface ChangeUserNameProps {
     user: any;
@@ -16,15 +20,26 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
     const router = useRouter();
     const [edit, setEdit] = useState<boolean>(false);
     const {
+        watch,
+        setValue,
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
             name: user?.name,
-            phone: user?.phone
+            phone: user?.phone,
+            image: user?.image,
         }
     });
+
+    const image = watch('image');
+
+    const handleUpload = (result: any) => {
+        setValue('image', result?.info?.secure_url, {
+            shouldValidate: true,
+        });
+    }
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
 
@@ -33,42 +48,17 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = ({
             router.refresh();
         })
         .catch(() => toast.error('Something went wrong!'))
+        .finally(() => setEdit(false))
     }
 
     return ( 
         <div className="mt-[20px]">
-            {
-                edit ? (
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="flex flex-col">
-                            <div className="flex justify-center items-center gap-[20px] mt-[20px]">
-                                <label htmlFor="name">Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    className="border-2 border-gray-300 p-2 rounded-lg"
-                                    {...register("name", { required: true })}
-                                />
-                            </div>
-                            <div className="flex justify-center items-center gap-[20px] mt-[20px]">
-                                <label htmlFor="number">Number</label>
-                                <input
-                                    type="text"
-                                    id="phone"
-                                    className="border-2 border-gray-300 p-2 rounded-lg"
-                                    {...register("phone", { required: true })}
-                                />
-                            </div>
-                        </div>
-                        <div className="flex gap-[20px] mb-[20px] justify-center">
-                            <button className="bg-blue-500 text-white p-2 rounded-lg mt-5">Save</button>
-                            <button className="bg-blue-500 text-white p-2 rounded-lg mt-5" onClick={() => setEdit(false)}>Cancel</button>
-                        </div>
-                    </form>
-                ) : (
-                    <button className="bg-blue-500 text-white p-2 rounded-lg" onClick={() => setEdit(true)}>Edit</button>
-                )
-            }
+            <button className="bg-blue-500 text-white p-2 rounded-lg" onClick={() => setEdit(true)}>Edit</button>
+            <SettingsModal 
+                currentUser={user} 
+                isOpen={edit}
+                onClose={() => setEdit(false)}
+            />
         </div>
      );
 }

@@ -31,11 +31,23 @@ const Checkbox = () => {
 };
 
 const Checkout = () => {
-  const hikes  = useHikes();
+  const [hikes, setHikes] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [bookedHikes, setBookedHikes] = useState<any>([])
   const discountPrice = 100;
   const router = useRouter();
+
+  useEffect(() => {
+    axios.get('/api/hikes')
+    .then(res => {
+        console.log(res.data);
+        setHikes(res.data)
+    })
+  }, [])
+
+  useEffect(() => {
+    console.log(hikes);
+  }, [hikes])
 
   useEffect(() => {
       axios.get('/api/hike')
@@ -58,7 +70,7 @@ const Checkout = () => {
       .catch(err => {
           console.log(err);
       })
-  }, [])
+  }, [hikes])
 
   const removeHike = (id:any) => {
       axios.post(`/api/delete/`, {id})

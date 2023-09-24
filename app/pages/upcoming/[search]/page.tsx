@@ -6,17 +6,34 @@ import clsx from "clsx";
 import { nanoid } from "nanoid";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const Search = () => {
     const pathname = usePathname();
     const searchText = pathname.split("/")[3]
-    const hikes = useHikes();
+    const [hikes, setHikes] = useState<any>([])
+    const [isLoading, setIsLoading] = useState(true)
+
+
+    useEffect(() => {
+        axios.get('/api/hikes')
+        .then(res => {
+            console.log(res.data);
+            setHikes(res.data)
+        })
+        .finally(() => {
+            setIsLoading(false)
+        })
+      }, [])
+    
+      useEffect(() => {
+        console.log(hikes);
+      }, [hikes])
 
     const [selectedHikes, setSelectedHikes] = useState<any>([]);
 
-    const filteredHikes = hikes.filter(hike => hike.name.toLowerCase().includes(searchText.toLowerCase()))
+    const filteredHikes = hikes.filter((hike:any) => hike.name.toLowerCase().includes(searchText.toLowerCase()))
 
     const handleDateClick = (hike:any, date:any) => {
         if(selectedHikes.find((h:any) => h.id === hike.id)) {
@@ -51,7 +68,11 @@ const Search = () => {
 
     return ( 
         <div className="mt-[200px]">
-            <div className="flex flex-wrap gap-[100px] justify-center">
+            {
+                isLoading ? (
+                    'Loading...'
+                ) : (
+                    <div className="flex flex-wrap gap-[100px] justify-center">
                     {
                         filteredHikes.map((hike: any) => (
                             <div key={hike.id} className="flex justify-center">
@@ -100,6 +121,8 @@ const Search = () => {
                         ))
                     }
                 </div>
+                )
+            }            
         </div>
     );
 }
