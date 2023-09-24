@@ -15,7 +15,23 @@ const Wishlist = () => {
     const [hikeDates, setHikeDates] = useState<any>([]);
     const [wishlist, setWishlist] = useState<any>([]);
 
-    const hikes = useHikes();
+    const [hikes, setHikes] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        axios.get('/api/hikes')
+        .then(res => {
+            console.log(res.data);
+            setHikes(res.data)
+        })
+        .finally(() => {
+            setIsLoading(false)
+        })
+      }, [])
+    
+      useEffect(() => {
+        console.log(hikes);
+      }, [hikes])
 
     useEffect(() => {
         axios.get('/api/hike')
@@ -29,7 +45,7 @@ const Wishlist = () => {
         .finally(() => {
             setLoading(false)
         })
-    }, [])
+    }, [hikes])
 
     useEffect(() => {
         if(hikeIds && hikeIds.length > 0) {

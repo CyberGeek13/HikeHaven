@@ -10,7 +10,7 @@ export async function POST(
         const body = await request.json();
         console.log(body, 'BODY_SETTINGS_POST');
         
-        const { name, phone } = body;
+        const { name, phone, image } = body;
 
         const phoneRegex = /^\d{9,10}$/
         if (!phoneRegex.test(phone)) {
@@ -27,7 +27,8 @@ export async function POST(
             },
             data: {
                 name,
-                phone
+                phone,
+                image
             }
         });
 

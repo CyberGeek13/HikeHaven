@@ -22,7 +22,7 @@ model User {
   phone          String?
   images         String[]
 
-  hikeIds        Int[]
+  hikeIds        String[]
   hikeDates      String[]
 
   accounts Account[]
@@ -45,4 +45,20 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Hike {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  location    String
+  distance    Int
+  elevation   Int
+  price       Int
+  date        String
+  availDates  String[]
+  difficulty  String
+  image       String
+  tags        String
+  quantity    Int
 }
