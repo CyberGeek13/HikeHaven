@@ -4,6 +4,7 @@ import Modal from "@/app/components/Modal";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import HikeImage from "./HikeImage";
 
 interface ImagesProps {
     currentUser: any
@@ -17,12 +18,14 @@ const Images:React.FC<ImagesProps> = ({
     const [isOpen, setIsOpen] = useState(false)
     const [toggle, setToggle] = useState(false)
     const [name, setName] = useState('')
+    const [userImage, setUserImage] = useState<any>(null)
 
     const handleImageClick = (image: any) => {
         setIsOpen(true)
         setId(image.id)
         setBigImage(image.url)
         setName(image.name)
+        setUserImage(image.image)
     }
 
     const [images, setImages] = useState<any>([])
@@ -43,14 +46,17 @@ const Images:React.FC<ImagesProps> = ({
             <div className="flex flex-wrap gap-[30px] justify-center mb-[30px]">
                     {
                         images.map((image: any) => (
-                            <Image alt="hike" src={image.url} height={200} width={400} className="rounded-[10px]" onClick={() => handleImageClick(image)}/>
+                            <HikeImage image={image} handleImageClick={handleImageClick}/>
                         ))
                     }
             </div>
             <Modal onClose={() => setIsOpen(false)} isOpen={isOpen}>
                     <div className="flex flex-col justify-center items-center gap-[20px]">
                         <Image alt="hike" src={bigImage} height={1500} width={1500} className="rounded-[10px] w-[3000px]"/>
-                        {name}
+                        <div className="flex gap-[7px] items-center font-bold">
+                            <Image alt="hike" src={userImage} height={70} width={70} className="rounded-full"/>
+                            {name}
+                        </div>
                         {
                             currentUser?.id === id && (
                                 <button className="bg-red-500 text-white rounded-[10px] px-[10px] py-[5px]" onClick={() => {

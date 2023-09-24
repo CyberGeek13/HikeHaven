@@ -54,7 +54,8 @@ export async function GET(
             select: {
                 id: true,
                 images: true,
-                name: true
+                name: true,
+                image: true
             }
         });
 
@@ -63,7 +64,8 @@ export async function GET(
                 return {
                     id: user.id,
                     url: image,
-                    name: user.name
+                    name: user.name,
+                    image: user.image
                 }
             })
         }).flat();
