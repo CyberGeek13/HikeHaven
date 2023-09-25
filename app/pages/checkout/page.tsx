@@ -9,7 +9,6 @@ import { TbTrekking } from 'react-icons/tb';
 import { BiSolidFirstAid } from 'react-icons/bi';
 import { FaHeadphones } from 'react-icons/fa';
 import Head from 'next/head';
-
 const Checkbox = () => {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -25,7 +24,16 @@ const Checkbox = () => {
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
-      <span className="text-[15px] text-black mt-[5px]">I Agree with all <span className="text-[15px] text-blue-600 cursor-pointer hover:underline">*Terms & Conditions*</span></span>
+      <span className="text-[15px] text-black mt-[5px]">
+        I Agree with all{" "}
+        <a
+          href="https://drive.google.com/file/d/1d7SK2X2b0S2jlsy3NXD2D6h7m-HOntP4/view"
+          target="_blank" // Open the link in a new tab
+          className="text-[15px] text-blue-600 cursor-pointer hover:underline"
+        >
+          *Terms & Conditions*
+        </a>
+      </span>
     </label>
   );
 };
@@ -110,13 +118,13 @@ const Checkout = () => {
                               </div>
                           </div>
                           <div className='flex flex-col'>
-                              <span className='text-[20px]'>
+                              <span className='text-[18px] font-semibold'>
                                   Quantity
                               </span>
-                              <span className='text-[20px]'>
-                                  1
+                              <span className='text-[18px]'>
+                                  1 Person
                               </span>
-                              <div className="bg-red-500 text-white text-[15px] font-semibold rounded-[10px] px-[5px] py-[2px] cursor-pointer hover:bg-red-600 transition-all duration-100" 
+                              <div className="bg-red-500 text-white text-[18px] font-semibold rounded-[10px] px-[5px] py-[2px] cursor-pointer hover:bg-red-600 transition-all duration-100" 
                               onClick={() => removeHike(hike.id)}>
                                   X Remove
                               </div>
@@ -129,15 +137,15 @@ const Checkout = () => {
           <div  className='w-[30%] bg-gray-300 flex flex-col p-[20px] gap-[30px] font-serif'>
               <div className='bg-white w-full p-[30px] flex flex-col'>
                   <div className='flex justify-between items-center'>
-                      <span className='text-[25px]'>
+                      <span className='text-[25px] font-bold'>
                           Subtotal
                       </span>
-                      <span className='text-[20px]'>
+                      <span className='text-[20px] font-bold'>
                           Rs {totalPrice} /-
                       </span>
                   </div>
                   <div className='flex justify-between items-center'>
-                      <span className='text-[25px]'>
+                      <span className='text-[20px]'>
                           Discount
                       </span>
                       <span className='text-[20px]'>
@@ -145,7 +153,7 @@ const Checkout = () => {
                       </span>
                   </div>
                   <div className='flex justify-between items-center'>
-                      <span className='text-[25px]'>
+                      <span className='text-[20px]'>
                           Tax
                       </span>
                       <span className='text-[20px]'>

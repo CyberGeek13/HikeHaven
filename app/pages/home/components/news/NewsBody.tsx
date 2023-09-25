@@ -26,6 +26,8 @@ const NewsBody: React.FC<NewsBodyProps> = ({
             window.open('https://forms.gle/Rc4besn8cYJqJnse8')
         }
     }
+
+    
     return ( 
         <div className="w-fit">
             <div className="flex justify-center">
