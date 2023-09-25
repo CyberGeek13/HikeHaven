@@ -22,8 +22,8 @@ model User {
   phone          String?
   images         String[]
 
-  hikeIds        String[]
-  hikeDates      String[]
+  hikeIds   String[]
+  hikeDates String[]
 
   accounts Account[]
 }
@@ -48,17 +48,19 @@ model Account {
 }
 
 model Hike {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  description String
-  location    String
-  distance    Int
-  elevation   Int
-  price       Int
-  date        String
-  availDates  String[]
-  difficulty  String
-  image       String
-  tags        String
-  quantity    Int
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  description     String
+  location        String
+  distance        Int
+  elevation       Int
+  price           Int
+  date            String
+  availDates      String[]
+  difficulty      String
+  image           String
+  tags            String
+  quantity        Int
+  title           String
+  hikeDescription String
 }
