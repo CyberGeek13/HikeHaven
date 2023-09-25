@@ -8,6 +8,7 @@ import Image from "next/image";
 import { use, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter, usePathname } from "next/navigation"
+import Button from "@/app/components/Button";
 
 const Upcoming = () => {
     // const hikes = useHikes();
@@ -94,6 +95,10 @@ const Upcoming = () => {
         toast.success('Hike added successfully. Proceed to wishlist')
     }
 
+    const onShowMoreClick = (id:String) => {
+        router.push(`/pages/hike/${id}`)
+    }
+
     const redirectToWishlist = () => {
         router.push('/pages/wishlist')
     }
@@ -154,6 +159,11 @@ const Upcoming = () => {
                                                 <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select</div>
                                             )
                                         }
+                                        <div>
+                                            <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
+                                                Show More
+                                            </Button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
