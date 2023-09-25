@@ -17,6 +17,7 @@ import { nanoid } from 'nanoid'
 import WhyChooseUs from "./components/WhyChooseUs";
 import BottomForum from "./components/BottomForum";
 import axios from "axios";
+import Button from "@/app/components/Button";
 
     const CustomPrevArrow = (props:any) => (
         <div
@@ -105,6 +106,10 @@ const Home = () => {
         prevArrow: <CustomPrevArrow />,
         nextArrow: <CustomNextArrow />,
     };
+
+    const onShowMoreClick = (id:String) => {
+        router.push(`/pages/hike/${id}`)
+    }
 
     const handleDateClick = (hike:any, date:any) => {
         if(selectedHikes.find((h:any) => h.id === hike.id)) {
@@ -207,6 +212,11 @@ const Home = () => {
                                                             <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[10px]">Click on date to select</div>
                                                         )
                                                     }
+                                                    <div>
+                                                        <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
+                                                            Show More
+                                                        </Button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

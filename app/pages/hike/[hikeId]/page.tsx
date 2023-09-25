@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { GiHiking, GiMountaintop } from "react-icons/gi";
 import { IoMdClock } from "react-icons/io";
+import BottomForum from "../../home/components/BottomForum";
 
 const Hike = () => {
     const pathname = usePathname();
@@ -184,6 +185,7 @@ const Hike = () => {
                                     <TextWithParagraphs text={hike.hikeDescription} />
                                 </div>
                             </div>
+                            <BottomForum />
                         </>
                     ) : (
                         <div className="flex justify-center items-center h-[500px]">
@@ -192,7 +194,6 @@ const Hike = () => {
                     )
                 }
             </div>
-            <div className="h-[5px] bg-primary" />
         </div>
      );
 }
