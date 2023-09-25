@@ -27,7 +27,6 @@ const NewsBody: React.FC<NewsBodyProps> = ({
         }
     }
 
-    
     return ( 
         <div className="w-fit">
             <div className="flex justify-center">
