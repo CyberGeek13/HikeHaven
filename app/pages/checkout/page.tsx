@@ -176,7 +176,7 @@ const Checkout = () => {
                     {hike.selectedDate}
                   </span>
                 </div>
-                <span className="text-[20px]">Rs {hike.price} /-</span>
+                <span className="text-[25px]">Rs {hike.price} /-</span>
                 <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
                     Show More Details
                 </Button>

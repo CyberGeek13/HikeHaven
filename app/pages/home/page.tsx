@@ -248,6 +248,19 @@ const Home = () => {
                 </div>
             </div>
             <WhyChooseUs />
+            <div>
+            <div className="h-[5px] bg-primary" />
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62968435.19566272!2d-139.8738122!3d15.576239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880b6f728ee9a971%3A0x67de1240d6920cca!2sHike%20Haven!5e0!3m2!1sen!2sus!4v1695748365141!5m2!1sen!2sus"
+                    width="1350"
+                    height="500"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div className="h-[6px] bg-primary" />
             <BottomForum />
         </main>
     );
