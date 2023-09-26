@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import useHikes from "@/app/hooks/useHikes";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { TbTrekking } from "react-icons/tb";
 import { BiSolidFirstAid } from "react-icons/bi";
 import { FaHeadphones } from "react-icons/fa";
-import Razorpay from "razorpay";
 import { Helmet } from "react-helmet";
 import Button from "@/app/components/Button";
 
@@ -45,6 +42,7 @@ const Checkout = () => {
   const [hikes, setHikes] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [bookedHikes, setBookedHikes] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const discountPrice = 100;
   const router = useRouter();
 
@@ -63,6 +61,7 @@ const Checkout = () => {
     axios
       .get("/api/hike")
       .then((res) => {
+        setIsLoading(true);
         const hikeIds = res.data.hikeIds;
         const hikeDates = res.data.hikeDates;
         let price = 0;
@@ -77,6 +76,7 @@ const Checkout = () => {
         });
         setBookedHikes(tempHikes);
         setTotalPrice(price);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -118,10 +118,6 @@ const Checkout = () => {
           const verifyUrl = "http://localhost:5000/api/verify";
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
-
-          //   if (data?.message) {
-          //     return
-          //   }
         } catch (error) {
           console.log(error);
         }
@@ -138,9 +134,9 @@ const Checkout = () => {
     e?.preventDefault();
     try {
       const orderUrl = "http://localhost:5000/api/payfortickets";
-      //   const seatCount: number = 5; // Replace with your actual seat count logic
-    //   const calculatedAmount = totalPrice - discountPrice;
-      const { data } = await axios.post(orderUrl, { amount: totalPrice });
+      console.log(totalPrice);
+      const finalPrice = totalPrice - discountPrice;
+      const { data } = await axios.post(orderUrl, { amount: finalPrice });
       console.log(data);
       if (data.data) {
         initPayment(data.data);
@@ -159,6 +155,13 @@ const Checkout = () => {
         <span className="text-[35px] font-serif font-semibold">
           Cart of Adventures<hr></hr>
         </span>
+        {
+          isLoading && (
+            <div className="flex justify-center items-center h-[500px]">
+              <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+          )
+        }
         {bookedHikes.map((hike: any) => (
           <div className="flex justify-between gap-[20px] p-[10px] bg-white shadow-xl">
             <div className="flex gap-[20px]">
@@ -169,7 +172,7 @@ const Checkout = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex flex-col gap-[10px]">
+              <div className="flex flex-col items-start justify-center gap-[10px]">
                 <div className="flex flex-col">
                   <span className="text-[30px]">{hike.name}</span>
                   <span className="text-[17px] text-gray-700">
@@ -182,15 +185,17 @@ const Checkout = () => {
                 </Button>
               </div>
             </div>
-            <div className="flex flex-col">
-              <span className="text-[18px] font-semibold">Quantity</span>
-              <span className="text-[18px]">1 Person</span>
-              <div
-                className="bg-red-500 text-white text-[18px] font-semibold rounded-[10px] px-[5px] py-[2px] cursor-pointer hover:bg-red-600 transition-all duration-100"
-                onClick={() => removeHike(hike.id)}
-              >
-                X Remove
+            <div className="flex flex-col justify-between pb-[20px]">
+              <div className="flex flex-col">
+                <span className="text-[18px] font-semibold">Quantity</span>
+                <span className="text-[18px]">1 Person</span>
               </div>
+              <div
+                  className="bg-red-500 text-white text-[18px] font-semibold rounded-[10px] px-[5px] py-[2px] cursor-pointer hover:bg-red-600 transition-all duration-100"
+                  onClick={() => removeHike(hike.id)}
+                  >
+                    X Remove
+                  </div>
             </div>
           </div>
         ))}
@@ -203,7 +208,7 @@ const Checkout = () => {
           </div>
           <div className="flex justify-between items-center">
             <span className="text-[20px]">Discount</span>
-            <span className="text-[20px]">Rs 0.00 /-</span>
+            <span className="text-[20px]">Rs {discountPrice} /-</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-[20px]">Tax</span>
@@ -213,23 +218,17 @@ const Checkout = () => {
           <div className="flex justify-between items-center font-semibold">
             <span className="text-[25px]">Total</span>
             <span className="text-[20px]">
-              Rs {totalPrice} /-
+              Rs {totalPrice - discountPrice} /-
             </span>
-            {/* Use the Checkbox component here */}
           </div>
           <br></br>
           <Checkbox />
-          {/* <div className='mt-[20px] z-[1]'>
-                      <PayPalScriptProvider options={{"clientId": "test"}}>
-                          <PayPalButtons style={{layout: "horizontal", label: "pay", height: 55}}/>
-                      </PayPalScriptProvider>
-                  </div> */}
           <div className="mt-[20px] z-[1]">
             <button
               onClick={(e: any) => handlePayment(e)}
               className="flex mr-2 text-black font-bold bg-yellow-400 border-0 py-3 px-[100px] focus:outline-none hover:bg-yellow-600 rounded text-sm"
             >
-              Pay {totalPrice}/-
+              Pay {totalPrice - discountPrice}/-
             </button>
           </div>
         </div>
