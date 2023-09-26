@@ -1,6 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import Image from "next/image";
 import ChangeUserName from "./components/ChangeUserName";
+import PastHikes from "./components/PastHikes";
 
 const MyProfile = async () => {
     const currentUser = await getCurrentUser();
@@ -13,6 +14,7 @@ const MyProfile = async () => {
                 <div className="text-xl font-semibold mt-5">{currentUser?.phone}</div>
                 <ChangeUserName user={currentUser}/>
             </div>
+            <PastHikes user={currentUser}/>
         </div>
      );
 }

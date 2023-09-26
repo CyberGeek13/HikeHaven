@@ -25,6 +25,9 @@ model User {
   hikeIds   String[]
   hikeDates String[]
 
+  pastHikeIds   String[]
+  pastHikeDates String[]
+
   accounts Account[]
 }
 
