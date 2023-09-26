@@ -8,6 +8,7 @@ import { BiSolidFirstAid } from "react-icons/bi";
 import { FaHeadphones } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import Button from "@/app/components/Button";
+import toast from "react-hot-toast";
 
 const Checkbox = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -118,6 +119,14 @@ const Checkout = () => {
           const verifyUrl = "http://localhost:5000/api/verify";
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
+          if(data.message === 'Payment verified successfully') {
+            toast.success('Payment completed successfully');
+            axios
+            .post(`/api/limitation`)
+            .then(res => console.log(res))
+            .catch(err => console.log(err)
+            )
+          }
           router.push('/pages/home');
         } catch (error) {
           console.log(error);
