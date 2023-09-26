@@ -118,6 +118,7 @@ const Checkout = () => {
           const verifyUrl = "http://localhost:5000/api/verify";
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
+          router.push('/pages/home');
         } catch (error) {
           console.log(error);
         }
@@ -141,8 +142,6 @@ const Checkout = () => {
       if (data.data) {
         initPayment(data.data);
       }
-      
-      router.push('/pages/home');
     } catch (error) {
       console.log(error);
     }
