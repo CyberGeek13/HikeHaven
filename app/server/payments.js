@@ -12,7 +12,7 @@ router.post("/payfortickets", async (req, res) => {
         });
 
         const options = {
-            amount: 500 * 100,
+            amount: 2450 * 100,
             currency: "INR",
             receipt: crypto.randomBytes(10).toString("hex"),
         };

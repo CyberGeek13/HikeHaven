@@ -154,14 +154,14 @@ const Upcoming = () => {
                                         </div>
                                         {
                                             selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                                <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[20px]">Selected</div>
+                                                <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[20px]">Trek Selected</div>
                                             ) : (
-                                                <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select</div>
+                                                <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select Trek</div>
                                             )
                                         }
                                         <div>
                                             <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
-                                                Show More
+                                                Show More Details
                                             </Button>
                                         </div>
                                     </div>
@@ -174,27 +174,27 @@ const Upcoming = () => {
             
 
             <div>
-                <h1 className="text-[60px] font-semibold ml-7 font-serif">International Treks</h1>
+                <h1 className="text-[60px] font-semibold ml-7 font-serif">Domestic Treks</h1>
                 <div className="w-[98vw] px-7">
                     <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
                 </div>
                 <div className="flex flex-wrap gap-[100px] justify-center">                
                     {
                         internationalHikes.map((hike: any) => (
-                            <div key={hike.id} className="flex justify-center">
-                                <div className="flex flex-col items-center justify-center w-[300px] pb-[100px] bg-white rounded-[10px] shadow-xl">
-                                    <div className="w-[300px] h-[200px] rounded-t-[10px]">
+                            <div key={hike.id} className="flex justify-center mb-[40px]">
+                                <div className="flex flex-col items-center justify-center w-[300px] pb-[130px] bg-white rounded-[10px] shadow-xl">
+                                    <div className="w-[300px] h-[180px] rounded-t-[10px]">
                                         <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive" className="rounded-t-[10px]"/>
                                     </div>
                                     <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
-                                        <div className="text-[25px] mt-[65px] font-semibold">{hike.name}</div>
-                                        <div className="text-[15px] font-semibold">{hike.location}</div>
+                                        <div className="text-[25px] mt-[100px] font-semibold">{hike.name}</div>
+                                        <div className="text-[15px] font-semibold justify-center text-center">{hike.location}</div>
                                         <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
                                         <div className={clsx(
                                             'text-[13px] ml-[7px]',
                                             hike.difficulty === 'easy' ? 'text-green-500' : '',
-                                            hike.difficulty === 'medium' ? 'text-yellow-500' : '',
-                                            hike.difficulty === 'hard' ? 'text-red-500' : ''
+                                            hike.difficulty === 'moderate' ? 'text-yellow-500' : '',
+                                            hike.difficulty === 'difficult' ? 'text-red-500' : ''
                                         )}>
                                             {hike.difficulty}
                                         </div>
@@ -216,11 +216,16 @@ const Upcoming = () => {
                                         </div>
                                         {
                                             selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                                <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[20px]">Selected</div>
+                                                <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[20px]">Trek Selected</div>
                                             ) : (
-                                                <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select</div>
+                                                <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[20px]">Click on date to select Trek</div>
                                             )
                                         }
+                                        <div>
+                                            <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
+                                                Show More Details
+                                            </Button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

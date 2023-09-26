@@ -10,6 +10,7 @@ import { BiSolidFirstAid } from "react-icons/bi";
 import { FaHeadphones } from "react-icons/fa";
 import Razorpay from "razorpay";
 import { Helmet } from "react-helmet";
+import Button from "@/app/components/Button";
 
 const Checkbox = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -99,6 +100,10 @@ const Checkout = () => {
     id: string;
   }
 
+  const onShowMoreClick = (id:String) => {
+    router.push(`/pages/hike/${id}`)
+}
+
   const initPayment = (data: PaymentData): void => {
     const options = {
       key: "rzp_test_3bv5dujiSIkqCG",
@@ -172,6 +177,9 @@ const Checkout = () => {
                   </span>
                 </div>
                 <span className="text-[20px]">Rs {hike.price} /-</span>
+                <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
+                    Show More Details
+                </Button>
               </div>
             </div>
             <div className="flex flex-col">
@@ -195,7 +203,7 @@ const Checkout = () => {
           </div>
           <div className="flex justify-between items-center">
             <span className="text-[20px]">Discount</span>
-            <span className="text-[20px]">Rs {discountPrice} /-</span>
+            <span className="text-[20px]">Rs 0.00 /-</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-[20px]">Tax</span>
@@ -205,7 +213,7 @@ const Checkout = () => {
           <div className="flex justify-between items-center font-semibold">
             <span className="text-[25px]">Total</span>
             <span className="text-[20px]">
-              Rs {totalPrice - discountPrice} /-
+              Rs {totalPrice} /-
             </span>
             {/* Use the Checkbox component here */}
           </div>
@@ -219,9 +227,9 @@ const Checkout = () => {
           <div className="mt-[20px] z-[1]">
             <button
               onClick={(e: any) => handlePayment(e)}
-              className="flex mr-2 text-black bg-yellow-500 border-0 py-2 px-2 focus:outline-none"
+              className="flex mr-2 text-black font-bold bg-yellow-400 border-0 py-3 px-[100px] focus:outline-none hover:bg-yellow-600 rounded text-sm"
             >
-              Pay
+              Pay {totalPrice}/-
             </button>
           </div>
         </div>
