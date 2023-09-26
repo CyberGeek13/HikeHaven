@@ -167,7 +167,9 @@ const Home = () => {
                 <div className="flex justify-center">
                     {
                         isLoading ? (
-                            "Loading..."
+                            <div className="flex justify-center items-center h-[500px]">
+                                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                            </div>
                         ) : (
                             <Slider {...settings} className="w-[90vw]">
                                 {
@@ -176,19 +178,19 @@ const Home = () => {
                                             <div className="flex flex-col items-center justify-center w-[300px] py-[30px] bg-white rounded-[10px] shadow-lg">
                                                 <div className="w-[300px] h-[200px] rounded-t-[10px]">
                                                     <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
-                                                    <div className={clsx(
-                                                        'text-[13px] ml-[7px]',
-                                                        hike.difficulty === 'easy' ? 'text-green-500' : '',
-                                                        hike.difficulty === 'medium' ? 'text-yellow-500' : '',
-                                                        hike.difficulty === 'hard' ? 'text-red-500' : ''
-                                                    )}>
-                                                        {hike.difficulty}
-                                                    </div>
                                                 </div>
                                                 <div className="flex flex-col items-center justify-center w-[300px]">
                                                     <div className="text-[25px] mt-[45px] font-semibold">{hike.name}</div>
-                                                    <div className="text-[15px] font-semibold">{hike.location}</div>
+                                                    <div className="text-[15px] text-center font-semibold">{hike.location}</div>
                                                     <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
+                                                    <div className={clsx(
+                                                        'text-[16px] ml-[7px] text-center',
+                                                        hike.difficulty === 'easy' ? 'text-green-500' : '',
+                                                        hike.difficulty === 'moderate' ? 'text-yellow-500' : '',
+                                                        hike.difficulty === 'difficult' ? 'text-red-500' : '',
+                                                    )}>
+                                                       ({hike.difficulty.charAt(0).toUpperCase() + hike.difficulty.slice(1)})
+                                                    </div>
                                                     <div className="flex flex-col gap-2 mt-[7px]">
                                                     {
                                                         hike.availDates.map((data:any) => (
@@ -207,14 +209,14 @@ const Home = () => {
                                                     </div>
                                                     {
                                                         selectedHikes.find((h:any) => h.id === hike.id) ? (
-                                                            <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[10px]">Selected</div>
+                                                            <div className="text-[15px] font-semibold text-green-500 mt-[10px] mb-[10px]">Trek Selected</div>
                                                         ) : (
-                                                            <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[10px]">Click on date to select</div>
+                                                            <div className="text-[15px] font-semibold text-gray-500 mt-[10px] mb-[10px]">Click on date to select trek</div>
                                                         )
                                                     }
                                                     <div>
                                                         <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
-                                                            Show More
+                                                            Show More Details
                                                         </Button>
                                                     </div>
                                                 </div>

@@ -9,6 +9,7 @@ import { use, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter, usePathname } from "next/navigation"
 import Button from "@/app/components/Button";
+import BottomForum from "../home/components/BottomForum";
 
 const Upcoming = () => {
     // const hikes = useHikes();
@@ -18,6 +19,7 @@ const Upcoming = () => {
     const [localHikes, setLocalHikes] = useState<any>([]);
     const [internationalHikes, setInternationalHikes] = useState<any>([]);
     const [hikes, setHikes] = useState<any>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         axios.get('/api/hike')
@@ -31,6 +33,7 @@ const Upcoming = () => {
                 }
                 return false;
             }))
+            setLoading(false)
             //console.log('/api/hike called');
         })
         .catch(err => {
@@ -118,23 +121,30 @@ const Upcoming = () => {
                 </div>
                 <div className="flex flex-wrap gap-[100px] justify-center">
                     {
+                        loading && (
+                            <div className="flex justify-center items-center">
+                                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+                            </div>
+                        )
+                    }
+                    {
                         localHikes.map((hike: any) => (
                             <div key={hike.id} className="flex justify-center">
-                                <div className="flex flex-col items-center justify-center w-[300px] pb-[100px] rounded-[10px] shadow-xl">
+                                <div className="flex flex-col items-center justify-center w-[300px] pb-[37px] rounded-[10px] shadow-xl">
                                     <div className="w-[300px] h-[200px] rounded-t-[10px]">
                                         <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
                                     </div>
-                                    <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
-                                        <div className="text-[25px] mt-[65px] font-semibold">{hike.name}</div>
+                                    <div className="flex flex-col items-center justify-center w-[300px]">
+                                        <div className="text-[25px] font-semibold">{hike.name}</div>
                                         <div className="text-[15px] font-semibold">{hike.location}</div>
                                         <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
                                         <div className={clsx(
                                             'text-[13px] ml-[7px]',
                                             hike.difficulty === 'easy' ? 'text-green-500' : '',
-                                            hike.difficulty === 'medium' ? 'text-yellow-500' : '',
-                                            hike.difficulty === 'hard' ? 'text-red-500' : ''
+                                            hike.difficulty === 'moderate' ? 'text-yellow-500' : '',
+                                            hike.difficulty === 'difficult' ? 'text-red-500' : ''
                                         )}>
-                                            {hike.difficulty}
+                                            {hike.difficulty.charAt(0).toUpperCase() + hike.difficulty.slice(1)}
                                         </div>
                                         <div className="flex flex-col gap-2 mt-[7px]">
                                         {
@@ -178,25 +188,32 @@ const Upcoming = () => {
                 <div className="w-[98vw] px-7">
                     <div className="h-1 w-full bg-[#ffd11a] rounded-sm mb-5"/>
                 </div>
-                <div className="flex flex-wrap gap-[100px] justify-center">                
+                <div className="flex flex-wrap gap-[100px] justify-center">        
+                    {
+                        loading && (
+                            <div className="flex justify-center items-center">
+                                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+                            </div>
+                        )
+                    }        
                     {
                         internationalHikes.map((hike: any) => (
-                            <div key={hike.id} className="flex justify-center mb-[40px]">
-                                <div className="flex flex-col items-center justify-center w-[300px] pb-[130px] bg-white rounded-[10px] shadow-xl">
-                                    <div className="w-[300px] h-[180px] rounded-t-[10px]">
-                                        <Image alt="hike" src={hike.image} height={0} width={0} layout="responsive" className="rounded-t-[10px]"/>
+                            <div key={hike.id} className="flex justify-center mb-[30px]">
+                                <div className="flex flex-col items-center justify-center w-[300px] pb-[37px] rounded-[10px] shadow-xl">
+                                    <div className="w-[300px] h-[200px] rounded-t-[10px]">
+                                        <Image alt="hike" className="rounded-t-[10px]" src={hike.image} height={0} width={0} layout="responsive"/>
                                     </div>
-                                    <div className="flex flex-col items-center justify-center w-[300px] h-[200px]">
-                                        <div className="text-[25px] mt-[100px] font-semibold">{hike.name}</div>
-                                        <div className="text-[15px] font-semibold justify-center text-center">{hike.location}</div>
-                                        <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
+                                    <div className="flex flex-col items-center justify-center w-[300px]">
+                                        <div className="text-[25px] font-semibold text-center">{hike.name}</div>
+                                        <div className="text-[15px] font-semibold text-center">{hike.location}</div>
+                                        <div className="text-[15px] font-semibold text-center">Rs {hike.price} /-</div>
                                         <div className={clsx(
                                             'text-[13px] ml-[7px]',
                                             hike.difficulty === 'easy' ? 'text-green-500' : '',
                                             hike.difficulty === 'moderate' ? 'text-yellow-500' : '',
                                             hike.difficulty === 'difficult' ? 'text-red-500' : ''
                                         )}>
-                                            {hike.difficulty}
+                                            {hike.difficulty.charAt(0).toUpperCase() + hike.difficulty.slice(1)}
                                         </div>
                                         <div className="flex flex-col gap-2 mt-[7px]">
                                         {
@@ -233,6 +250,7 @@ const Upcoming = () => {
                     }
                 </div>
             </div>
+            <BottomForum />
         </div>
      );
 }

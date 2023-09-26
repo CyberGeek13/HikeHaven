@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface NewsBodyProps {
     id: number;
@@ -21,9 +22,13 @@ const NewsBody: React.FC<NewsBodyProps> = ({
     showBtn,
     btnText
 }) => {
+    const router = useRouter();
     const handleBtnClick = () => {
         if(btnText === "Apply Now") {
             window.open('https://forms.gle/Rc4besn8cYJqJnse8')
+        }
+        if(btnText === "View Gallery") {
+            router.push('/pages/gallery');
         }
     }
 
