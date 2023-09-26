@@ -17,9 +17,9 @@ const HikeImage:React.FC<HikeImageProps> = ({
             <Image 
                 alt="hike" 
                 src={image.url} 
-                height={200} 
-                width={400} 
-                className="rounded-[10px] cursor-pointer" 
+                height={hovered ? 210 : 200} 
+                width={hovered? 410 : 400} 
+                className="rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-2xl" 
                 onClick={() => handleImageClick(image)}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}

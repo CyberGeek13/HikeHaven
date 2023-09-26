@@ -19,6 +19,7 @@ const Images:React.FC<ImagesProps> = ({
     const [toggle, setToggle] = useState(false)
     const [name, setName] = useState('')
     const [userImage, setUserImage] = useState<any>(null)
+    const [loading, setLoading] = useState(true)
 
     const handleImageClick = (image: any) => {
         setIsOpen(true)
@@ -35,6 +36,7 @@ const Images:React.FC<ImagesProps> = ({
         .then(res => {
             console.log(res.data);
             setImages(res.data)
+            setLoading(false)
         })
         .catch(err => {
             console.log(err);
@@ -43,6 +45,13 @@ const Images:React.FC<ImagesProps> = ({
 
     return (
         <div>
+            {
+                loading && (
+                    <div className="flex justify-center items-center h-[500px]">
+                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                    </div>
+                )
+            }
             <div className="flex flex-wrap gap-[30px] justify-center mb-[30px]">
                     {
                         images.map((image: any) => (

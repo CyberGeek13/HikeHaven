@@ -64,15 +64,19 @@ const DesktopNavbar:React.FC<DesktopNavbarProps> = ({
                         onChange={(e) => setSearchText(e.target.value)}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
+                                if(searchText === "") return;
                                 router.push(
                                     `/pages/upcoming/${searchText}`,
                                 );
                             }
                         }}
                     />
-                    <button className="absolute right-2 top-2 text-gray-600" onClick={() => router.push(
-                            `/pages/upcoming?search=${searchText}`,
-                        )}>
+                    <button className="absolute right-2 top-2 text-gray-600" onClick={() => {
+                            if(searchText === "") return;
+                            router.push(
+                                `/pages/upcoming?search=${searchText}`,
+                            )
+                        }}>
                         <FaSearch /> {/* Use the search icon */}
                     </button>
                 </div>
