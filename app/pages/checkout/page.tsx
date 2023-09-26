@@ -141,6 +141,8 @@ const Checkout = () => {
       if (data.data) {
         initPayment(data.data);
       }
+      
+      router.push('/pages/home');
     } catch (error) {
       console.log(error);
     }
