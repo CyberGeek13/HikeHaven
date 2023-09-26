@@ -1,7 +1,9 @@
 import Image from "next/image";
+import BottomForum from "../home/components/BottomForum";
 
 const About = () => {
     return ( 
+        <div>
         <div className="mt-[150px] bg-white flex flex-col items-center font-serif">
             <Image alt="about" src="/images/logo.png" height={150} width={150} className="my-[10px]"/>
             <div className="text-[30px] font-semibold">About Us</div>
@@ -26,6 +28,9 @@ const About = () => {
                 <span className="text-[25px] text-black">Thank you for choosing HikeHaven as your hiking companion. <br/> Let's explore the world, one trail at a time!</span>
             </div>
         </div>
+        <BottomForum/>
+    </div>
+        
      );
 }
  
