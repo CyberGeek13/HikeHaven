@@ -185,6 +185,7 @@ const Checkout = () => {
               <div className="flex flex-col items-start justify-center gap-[10px]">
                 <div className="flex flex-col">
                   <span className="text-[30px]">{hike.name}</span>
+                <span className="text-[17px]">({hike.quantity} seats remaining)</span>
                   <span className="text-[17px] text-gray-700">
                     {hike.selectedDate}
                   </span>

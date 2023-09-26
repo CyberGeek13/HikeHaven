@@ -12,6 +12,9 @@ export async function POST(
             return new NextResponse('Unauthorized', { status: 401 });
         }
 
+        const hikeIds = currentUser.hikeIds;
+        const hikeDates = currentUser.hikeDates;
+
         await prisma.hike.updateMany({
             where: {
                 id: {
@@ -35,13 +38,19 @@ export async function POST(
                 },
                 hikeDates: {
                     set: []
+                },
+                pastHikeIds: {
+                    push: hikeIds
+                },
+                pastHikeDates: {
+                    push: hikeDates
                 }
             }
         })
 
         return new NextResponse('OK', { status: 200 });
     } catch (error) {
-        console.log(error, 'ERROR_HIKE_DELETE');
+        console.log(error, 'ERROR_HIKE_LIMITATION');
         return new NextResponse('Internal Error', { status: 500 });
     }
 }
