@@ -40,11 +40,6 @@ const useRoutes = () => {
             ],
             active:pathname === "/pages/aboutus"
         },
-        // {
-        //     label:"Rent/Buy Gears",
-        //     href:"/pages/accessories",
-        //     active:pathname === "/pages/accessories"
-        // },
     ],[pathname])
 
     return routes;
