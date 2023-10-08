@@ -38,12 +38,20 @@ export async function POST(
             }
         });
 
+        if(!updatedHikeIds || !updatedHikeDates){
+            return new NextResponse('Internal Error', { status: 500 });
+        }
+
+
+
         const updatedUser = await prisma.user.update({
             where: {
                 id: currentUser.id
             },
             data: {
+                //@ts-ignore
                 hikeIds: updatedHikeIds,
+                //@ts-ignore
                 hikeDates: updatedHikeDates
             }
         });
