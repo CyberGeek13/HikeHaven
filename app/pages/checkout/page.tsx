@@ -118,7 +118,7 @@ const Checkout = () => {
       order_id: data.id,
       handler: async (response: any): Promise<void> => {
         try {
-          const verifyUrl = "http://localhost:5000/api/verify";
+          const verifyUrl = "https://hikehaven-backend-akyx.onrender.com/api/verify";
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
           if(data.message === 'Payment verified successfully') {
@@ -145,7 +145,7 @@ const Checkout = () => {
   const handlePayment = async (e: Event | undefined): Promise<void> => {
     e?.preventDefault();
     try {
-      const orderUrl = "http://localhost:5000/api/payfortickets";
+      const orderUrl = "https://hikehaven-backend-akyx.onrender.com/api/payfortickets";
       console.log(totalPrice);
       const finalPrice = totalPrice - discountPrice;
       const { data } = await axios.post(orderUrl, { amount: finalPrice });
