@@ -9,6 +9,8 @@ import { FaHeadphones } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import Button from "@/app/components/Button";
 import toast from "react-hot-toast";
+import { RxTriangleUp } from "react-icons/rx";
+import { RxTriangleDown } from "react-icons/rx";
 
 const Checkbox = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -172,7 +174,7 @@ const Checkout = () => {
             </div>
           )
         }
-        {bookedHikes.map((hike: any) => (
+        {/* {bookedHikes.map((hike: any) => (
           <div className="flex justify-between gap-[20px] p-[10px] bg-white shadow-xl">
             <div className="flex gap-[20px]">
               <div className="w-[200px] h-[200px]">
@@ -199,7 +201,13 @@ const Checkout = () => {
             <div className="flex flex-col justify-between pb-[20px]">
               <div className="flex flex-col">
                 <span className="text-[18px] font-semibold">Quantity</span>
-                <span className="text-[18px]">1 Person</span>
+                <span className="flex gap-[4px]">
+                  <span className="flex flex-col gap-[1px]">
+                    <RxTriangleUp className="cursor-pointer"/>
+                    <RxTriangleDown className="cursor-pointer"/>
+                  </span>
+                  <span className="text-[18px]">1 Person</span>
+                </span>
               </div>
               <div
                   className="bg-red-500 text-white text-[18px] font-semibold rounded-[10px] px-[5px] py-[2px] cursor-pointer hover:bg-red-600 transition-all duration-100"
@@ -209,7 +217,19 @@ const Checkout = () => {
                   </div>
             </div>
           </div>
+        ))} */}
+
+        {bookedHikes.map((hike: any) => (
+          <Hike
+            key={hike.id}
+            hike={hike}
+            onShowMoreClick={onShowMoreClick}
+            removeHike={removeHike}
+            increasePrice={() => setTotalPrice(totalPrice + hike.price)}
+            decreasePrice={() => setTotalPrice(totalPrice - hike.price)}
+          />
         ))}
+
       </div>
       <div className="w-[30%] bg-gray-300 flex flex-col p-[20px] gap-[30px] font-serif">
         <div className="bg-white w-full p-[30px] flex flex-col">
@@ -270,6 +290,77 @@ const Checkout = () => {
               your clients inquire about a tour until they return home.
             </span>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+type HikeProps = {
+  hike: any;
+  onShowMoreClick: any;
+  removeHike: any;
+  increasePrice: any;
+  decreasePrice: any;
+};
+
+const Hike: React.FC<HikeProps> = ({ hike, onShowMoreClick, removeHike, increasePrice, decreasePrice }) => {
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+    increasePrice();
+  }
+
+  const decreaseQuantity = () => {
+    if(quantity > 1) {
+      setQuantity(quantity - 1);
+      decreasePrice();
+    }
+  }
+
+  return (
+    <div className="flex justify-between gap-[20px] p-[10px] bg-white shadow-xl">
+      <div className="flex gap-[20px]">
+        <div className="w-[200px] h-[200px]">
+          <img
+            src={hike.image}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="flex flex-col items-start justify-center gap-[10px]">
+          <div className="flex flex-col">
+            <span className="text-[30px]">{hike.name}</span>
+            <span className="text-[17px]">
+              ({hike.quantity} seats remaining)
+            </span>
+            <span className="text-[17px] text-gray-700">
+              {hike.selectedDate}
+            </span>
+          </div>
+          <span className="text-[25px]">Rs {hike.price} /-</span>
+          <Button type="button" onClick={() => onShowMoreClick(hike.id)}>
+            Show More Details
+          </Button>
+        </div>
+      </div>
+      <div className="flex flex-col justify-between pb-[20px]">
+        <div className="flex flex-col">
+          <span className="text-[18px] font-semibold">Quantity</span>
+          <span className="flex gap-[4px]">
+            <span className="flex flex-col gap-[1px]">
+              <RxTriangleUp className="cursor-pointer" onClick={() => increaseQuantity()}/>
+              <RxTriangleDown className="cursor-pointer" onClick={() => decreaseQuantity()}/>
+            </span>
+            <span className="text-[18px]">{quantity} People</span>
+          </span>
+        </div>
+        <div
+          className="bg-red-500 text-white text-[18px] font-semibold rounded-[10px] px-[5px] py-[2px] cursor-pointer hover:bg-red-600 transition-all duration-100"
+          onClick={() => removeHike(hike.id)}
+        >
+          X Remove
         </div>
       </div>
     </div>
