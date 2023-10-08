@@ -28,7 +28,9 @@ const PastHikes:React.FC<PastHikesProps> = ({
     }, []);
 
     useEffect(() => {
+        if(pastHikeIds){
         setSelectedHikes(hikes.filter((hike:any) => pastHikeIds.includes(hike.id)))
+        }
     }, [hikes])
 
     const  redirectToUpcoming = () => {
@@ -63,7 +65,7 @@ const PastHikes:React.FC<PastHikesProps> = ({
                                                         <div className="text-[15px] font-semibold">{hike.location}</div>
                                                         <div className="text-[15px] font-semibold">Rs {hike.price} /-</div>
                                                         <div className="text-[15px] font-semibold text-black mt-[10px]">
-                                                            {pastHikeDates[pastHikeIds.indexOf(hike.id)]}
+                                                            {pastHikeIds && pastHikeDates[pastHikeIds.indexOf(hike.id)]}
                                                         </div>
 
                                                     </div>
